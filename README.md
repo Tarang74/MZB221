@@ -1,20 +1,20 @@
-# QUT-Notes-Template - Unit name
+# MZB221 - Electrical Engineering Mathematics
 
-## Unit coordinator name
+## Prof Scott McCue
 
-### 
+### Semester 1, 2024
 
 ---
 
 ## Downloads
 
-Lecture notes download: [QUT-Notes-Template Lecture Notes PDF](https://www.github.com/Tarang74/QUT-Notes-Template/raw/main/QUT-Notes-Template%20Lecture%20Notes.pdf)
+Lecture notes download: [MZB221 Lecture Notes PDF](https://www.github.com/Tarang74/MZB221/raw/main/MZB221%20Lecture%20Notes.pdf)
 
-Exam notes download: [QUT-Notes-Template Exam Notes PDF](https://www.github.com/Tarang74/QUT-Notes-Template/raw/main/QUT-Notes-Template%20Exam%20Notes.pdf)
+Exam notes download: [MZB221 Exam Notes PDF](https://www.github.com/Tarang74/MZB221/raw/main/MZB221%20Exam%20Notes.pdf)
 
 ---
 
-This repository provides **lecture notes** and **exam notes** for **QUT-Notes-Template - Unit name**.
+This repository provides **lecture notes** and **exam notes** for **MZB221 - Electrical Engineering Mathematics**.
 
 *The contents of the lecture notes are described below.*
 
@@ -22,7 +22,7 @@ This repository provides **lecture notes** and **exam notes** for **QUT-Notes-Te
 
 ## Contents
 
-1. Section 1
+1. Infinite Series
 
 ---
 
