@@ -1,0 +1,126 @@
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
+\documentclass{article}
+\input{LaTeX-Submodule/template.tex}
+
+% Additional packages & macros
+
+% Header and footer
+\newcommand{\unitName}{Electrical Engineering Mathematics}
+\newcommand{\unitTime}{Semester 1, 2024}
+\newcommand{\unitCoordinator}{Prof Scott McCue}
+\newcommand{\documentAuthors}{Tarang Janawalkar}
+
+\fancyhead[L]{\unitName}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% Copyright
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0},
+    imagewidth={5em},
+    hyphenation={raggedright}
+]{doclicense}
+
+\date{}
+
+\begin{document}
+%
+\begin{titlepage}
+    \vspace*{\fill}
+    \begin{center}
+        \LARGE{\textbf{\unitName}} \\[0.1in]
+        \normalsize{\unitTime} \\[0.2in]
+        \normalsize\textit{\unitCoordinator} \\[0.2in]
+        \documentAuthors
+    \end{center}
+    \vspace*{\fill}
+    \doclicenseThis
+    \thispagestyle{empty}
+\end{titlepage}
+\newpage
+%
+\tableofcontents
+\newpage
+%
+\section{Infinite Series}
+\subsection{Sequences}
+A sequence is an \textbf{ordered list} of numbers
+\begin{equation*}
+    a_1, \: a_2, \: a_3, \: \ldots, \: a_n, \: \ldots
+\end{equation*}
+denoted \({\left\{ a_n \right\}}_{n=1}^{\infty}\), where
+\(n\) is the index of the sequence.
+A sequence can be \textbf{finite} or \textbf{infinite}.
+\subsection{Limits of Sequences}
+An infinite sequence \(\left\{ a_n \right\}\) has a limit \(L\) if
+\(a_n\) approaches \(L\) as \(n\) approaches infinity:
+\begin{equation*}
+    \lim_{n \to \infty} a_n = L
+\end{equation*}
+If such a limit exists, the sequence \textbf{converges} to \(L\).
+Otherwise, the sequence \textbf{diverges}. Sequences that oscillate
+between two or more values do not have a limit.
+\subsection{Series}
+Given a sequence \(\left\{ a_n \right\}\), we can construct a sequence
+of \textbf{partial sums},
+\begin{equation*}
+    s_n = a_1 + a_2 + \cdots + a_n
+\end{equation*}
+denoted \(\left\{ s_n \right\}\), such that when \(\left\{ s_n \right\}\)
+converges to a finite limit \(L\), that is,
+\begin{equation*}
+    \lim_{n \to \infty} s_n = L
+\end{equation*}
+the \textbf{infinite series} \(\sum_{n=1}^{\infty} a_n\) converges to \(L\).
+Otherwise, the series \(\sum_{n=1}^{\infty} a_n\) diverges.
+\subsubsection{Common Series}
+Below are a list of common series that converge to a finite limit:
+\begin{itemize}
+    \item \textbf{Geometric Series}: A sum of the geometric progression
+    \begin{equation*}
+        \sum_{n=0}^{\infty} a r^n
+    \end{equation*}
+    converges when \(\abs*{r} < 1\), and diverges otherwise. When
+    \(\abs*{r} < 1\),
+    \begin{equation*}
+        \sum_{n=0}^{\infty} a r^n = \frac{a}{1 - r}
+    \end{equation*}
+    \item \textbf{Harmonic Series}: A sum of the reciprocals of natural numbers
+    \begin{equation*}
+        \sum_{n=1}^{\infty} \frac{1}{n}
+    \end{equation*}
+    always diverges.
+    \item \textbf{\(p\)-Series}: A sum of the reciprocals of \(p\)-powers of
+    natural numbers
+    \begin{equation*}
+        \sum_{n=1}^{\infty} \frac{1}{n^p}
+    \end{equation*}
+    converges when \(p > 1\), and diverges otherwise. This series is
+    closely related to the \textbf{Riemann Zeta Function}, and has
+    exact values for even integers \(p\).
+\end{itemize}
+\subsection{Convergence Tests}
+There are several tests to determine the convergence of an infinite series.
+Note that these tests do not determine the value of the limit.
+\subsubsection{Ratio Test}
+Given the infinite series \(\sum_{n=1}^{\infty} a_n\), with
+\begin{equation*}
+    \rho = \lim_{n \to \infty} \abs*{\frac{a_{n+1}}{a_n}}
+\end{equation*}
+\begin{enumerate}[label=(\arabic*)]
+    \item If \(\rho < 1\), the series converges.
+    \item If \(\rho > 1\), the series diverges.
+    \item If \(\rho = 1\), the test is inconclusive.
+\end{enumerate}
+\subsubsection{Alternating Series Test}
+Given the infinite series \(\sum_{n=1}^{\infty} {\left( -1 \right)}^{n-1} b_n\),
+the alternating series converges if the following conditions are met:
+\begin{enumerate}[label=(\arabic*)]
+    \item \(b_n > 0\) for all \(n\).
+    \item \(b_{n+1} \leq b_n\) for all \(n\).
+    \item \(\lim_{n \to \infty} b_n = 0\).
+\end{enumerate}
+\end{document}
