@@ -123,4 +123,48 @@ the alternating series converges if the following conditions are met:
     \item \(b_{n+1} \leq b_n\) for all \(n\).
     \item \(\lim_{n \to \infty} b_n = 0\).
 \end{enumerate}
+\section{Series Approximations}
+\subsection{Taylor Polynomials}
+A Taylor polynomial is a polynomial that approximates a function near a
+point \(x = x_0\). The \(n\)-th order Taylor polynomial of an
+\(n\)-times differentiable function \(f\left( x \right)\) near
+\(x = x_0\) is given by:
+\begin{equation*}
+    P_n\left( x \right) = f\left( x_0 \right) + f'\left( x_0 \right) \left( x - x_0 \right) + \frac{f''\left( x_0 \right)}{2!} {\left( x - x_0 \right)}^2 + \cdots + \frac{f^{\left( n \right)}\left( x_0 \right)}{n!} {\left( x - x_0 \right)}^n
+\end{equation*}
+Using summation notation, this becomes,
+\begin{equation*}
+    f\left( x \right) \approx P_n\left( x \right) = \sum_{k=0}^{n} \frac{f^{\left( k \right)}\left( x_0 \right)}{k!} {\left( x - x_0 \right)}^k
+\end{equation*}
+If \(f\) is (\(n+1\))-times differentiable on an interval including
+\(x_0\), then the error of this approximation can be bounded by
+\begin{equation*}
+    R_n\left( x \right) = f\left( x \right) - P_n\left( x \right) = \frac{f^{\left( n+1 \right)}\left( p \right)}{\left( n+1 \right)!} {\left( x - x_0 \right)}^{n+1}
+\end{equation*}
+for some \(p\) between \(x\) and \(x_0\).
+\subsection{Taylor Series}
+The Taylor polynomials can be extended to Taylor series by taking the
+limit \(n \to \infty\). The Taylor series of an infinitely
+differentiable function \(f\left( x \right)\) near \(x = x_0\) is
+defined:
+\begin{equation*}
+    f\left( x \right) = \sum_{n=0}^{\infty} \frac{f^{\left( n \right)}\left( x_0 \right)}{n!} {\left( x - x_0 \right)}^n
+\end{equation*}
+When \(x_0 = 0\), the Taylor series is called the \textbf{Maclaurin series}.
+\subsection{Convergence of Taylor Series}
+The Taylor series is a form of a \textbf{power series}:
+\begin{equation*}
+    \sum_{n=0}^{\infty} c_n {\left( x - x_0 \right)}^n.
+\end{equation*}
+A power series may converge in one of three ways:
+\begin{enumerate}[label=(\arabic*)]
+    \item At a single point \(x = x_0\), with a radius of convergence
+    \(R = 0\).
+    \item On a finite open interval \(\ointerval{x_0 - R}{x_0 + R}\),
+        with a radius of convergence \(R > 0\). The series is not
+        guaranteed to converge at the endpoints of this interval.
+    \item Everywhere, with a radius of convergence \(R = \infty\).
+\end{enumerate}
+For elementary functions, the Taylor series converges to the function
+everywhere within the radius of convergence.
 \end{document}
