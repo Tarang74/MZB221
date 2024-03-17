@@ -80,31 +80,31 @@ Otherwise, the series \(\sum_{n=1}^{\infty} a_n\) diverges.
 Below are a list of common series that converge to a finite limit:
 \begin{itemize}
     \item \textbf{Geometric Series}: A sum of the geometric progression
-    \begin{equation*}
-        \sum_{n=0}^{\infty} a r^n
-    \end{equation*}
-    converges when \(\abs*{r} < 1\), and diverges otherwise. When
-    \(\abs*{r} < 1\),
-    \begin{equation*}
-        \sum_{n=0}^{\infty} a r^n = \frac{a}{1 - r}
-    \end{equation*}
+          \begin{equation*}
+              \sum_{n=0}^{\infty} a r^n
+          \end{equation*}
+          converges when \(\abs*{r} < 1\), and diverges otherwise. When
+          \(\abs*{r} < 1\),
+          \begin{equation*}
+              \sum_{n=0}^{\infty} a r^n = \frac{a}{1 - r}
+          \end{equation*}
     \item \textbf{Harmonic Series}: A sum of the reciprocals of natural numbers
-    \begin{equation*}
-        \sum_{n=1}^{\infty} \frac{1}{n}
-    \end{equation*}
-    always diverges.
+          \begin{equation*}
+              \sum_{n=1}^{\infty} \frac{1}{n}
+          \end{equation*}
+          always diverges.
     \item \textbf{\(p\)-Series}: A sum of the reciprocals of \(p\)-powers of
-    natural numbers
-    \begin{equation*}
-        \sum_{n=1}^{\infty} \frac{1}{n^p}
-    \end{equation*}
-    converges when \(p > 1\), and diverges otherwise. This series is
-    closely related to the \textbf{Riemann Zeta Function}, and has
-    exact values for even integers \(p\).
+          natural numbers
+          \begin{equation*}
+              \sum_{n=1}^{\infty} \frac{1}{n^p}
+          \end{equation*}
+          converges when \(p > 1\), and diverges otherwise. This series is
+          closely related to the \textbf{Riemann Zeta Function}, and has
+          exact values for even integers \(p\).
 \end{itemize}
 \subsection{Convergence Tests}
-There are several tests to determine the convergence of an infinite series.
-Note that these tests do not determine the value of the limit.
+There are several tests to determine the convergence of an infinite
+series. Note that these tests do not determine the value of the limit.
 \subsubsection{Ratio Test}
 Given the infinite series \(\sum_{n=1}^{\infty} a_n\), with
 \begin{equation*}
@@ -116,19 +116,20 @@ Given the infinite series \(\sum_{n=1}^{\infty} a_n\), with
     \item If \(\rho = 1\), the test is inconclusive.
 \end{enumerate}
 \subsubsection{Alternating Series Test}
-Given the infinite series \(\sum_{n=1}^{\infty} {\left( -1 \right)}^{n-1} b_n\),
-the alternating series converges if the following conditions are met:
+Given the infinite series \(\sum_{n=1}^{\infty} {\left( -1
+\right)}^{n-1} b_n\), the alternating series converges if the following
+conditions are met:
 \begin{enumerate}[label=(\arabic*)]
     \item \(b_n > 0\) for all \(n\).
     \item \(b_{n+1} \leq b_n\) for all \(n\).
     \item \(\lim_{n \to \infty} b_n = 0\).
 \end{enumerate}
-\section{Series Approximations}
+\section{Taylor Series}
 \subsection{Taylor Polynomials}
 A Taylor polynomial is a polynomial that approximates a function near a
 point \(x = x_0\). The \(n\)-th order Taylor polynomial of an
-\(n\)-times differentiable function \(f\left( x \right)\) near
-\(x = x_0\) is given by:
+\(n\)-times differentiable function \(f\left( x \right)\) near \(x =
+x_0\) is given by:
 \begin{equation*}
     P_n\left( x \right) = f\left( x_0 \right) + f'\left( x_0 \right) \left( x - x_0 \right) + \frac{f''\left( x_0 \right)}{2!} {\left( x - x_0 \right)}^2 + \cdots + \frac{f^{\left( n \right)}\left( x_0 \right)}{n!} {\left( x - x_0 \right)}^n
 \end{equation*}
@@ -142,7 +143,7 @@ If \(f\) is (\(n+1\))-times differentiable on an interval including
     R_n\left( x \right) = f\left( x \right) - P_n\left( x \right) = \frac{f^{\left( n+1 \right)}\left( p \right)}{\left( n+1 \right)!} {\left( x - x_0 \right)}^{n+1}
 \end{equation*}
 for some \(p\) between \(x\) and \(x_0\).
-\subsection{Taylor Series}
+\subsection{The Taylor Series}
 The Taylor polynomials can be extended to Taylor series by taking the
 limit \(n \to \infty\). The Taylor series of an infinitely
 differentiable function \(f\left( x \right)\) near \(x = x_0\) is
@@ -159,12 +160,140 @@ The Taylor series is a form of a \textbf{power series}:
 A power series may converge in one of three ways:
 \begin{enumerate}[label=(\arabic*)]
     \item At a single point \(x = x_0\), with a radius of convergence
-    \(R = 0\).
+          \(R = 0\).
     \item On a finite open interval \(\ointerval{x_0 - R}{x_0 + R}\),
-        with a radius of convergence \(R > 0\). The series is not
-        guaranteed to converge at the endpoints of this interval.
+          with a radius of convergence \(R > 0\). The series is not
+          guaranteed to converge at the endpoints of this interval.
     \item Everywhere, with a radius of convergence \(R = \infty\).
 \end{enumerate}
 For elementary functions, the Taylor series converges to the function
 everywhere within the radius of convergence.
+\subsection{Common Taylor Series}
+Below are a list of common Taylor series expansions:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{c c c}
+        \toprule
+        \textbf{Function}             & \textbf{Taylor Series}                                                                           & \textbf{Convergence}     \\
+        \midrule
+        \(e^x\)                       & \(\displaystyle\sum_{n=0}^{\infty} \frac{x^n}{n!}\)                                              & \(-\infty < x < \infty\) \\
+        \(\sin{\left( x \right)}\)    & \(\displaystyle\sum_{n=0}^{\infty} \frac{{\left( -1 \right)}^n x^{2n+1}}{\left( 2n+1 \right)!}\) & \(-\infty < x < \infty\) \\
+        \(\cos{\left( x \right)}\)    & \(\displaystyle\sum_{n=0}^{\infty} \frac{{\left( -1 \right)}^n x^{2n}}{\left( 2n \right)!}\)     & \(-\infty < x < \infty\) \\
+        \(\ln{\left( 1 - x \right)}\) & \(\displaystyle-\sum_{n=1}^{\infty} \frac{x^n}{n}\)                                              & \(-1 \leqslant x < 1\)   \\
+        \(\ln{\left( 1 + x \right)}\) & \(\displaystyle\sum_{n=1}^{\infty} \frac{{\left( -1 \right)}^{n+1} x^n}{n}\)                     & \(-1 < x \leqslant 1\)   \\
+        \(\dfrac{1}{1 - x}\)          & \(\displaystyle\sum_{n=0}^{\infty} x^n\)                                                         & \(-1 < x < 1\)           \\
+        \bottomrule
+    \end{tabular}
+    % \caption{} % \label{}
+\end{table}
+\section{Fourier Series}
+\subsection{Periodic Functions}
+A function \(f\left( t \right)\) is \textbf{periodic} with period \(T\)
+if it satisfies the following condition:
+\begin{equation*}
+    f\left( t + T \right) = f\left( t \right)
+\end{equation*}
+for all \(t\). As with Taylor polynomials, we wish to build an
+approximation of \(f\left( t \right)\) using some basis.
+\subsection{The Fourier Series}
+The Fourier series is a representation of a periodic function as the
+linear combination of sine and cosine functions. For a periodic
+function \(f\left( t \right)\) with period \(T\), the Fourier series of
+\(f\left( t \right)\) is defined:
+\begin{equation*}
+    f_F\left( t \right) = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right).
+\end{equation*}
+The coefficients \(a_0\), \(a_n\), and \(b_n\) are given by:
+\begin{align*}
+    a_0 & = \frac{1}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \odif{t}                                         \\
+    a_n & = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t} \\
+    b_n & = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{align*}
+where \(t_0\) is any value of \(t\), often chosen to be \(0\) or \(-T/2\).
+\subsection{Convergence of Fourier Series}
+If \(f\left( t \right)\) is piecewise smooth on the interval
+\(\interval{t_0}{t_0 + T}\), then the Fourier series converges to
+\(f\left( t \right)\) in the interval \(\interval{t_0}{t_0 + T}\):
+\begin{equation*}
+    f_F\left( t \right) = \lim_{\epsilon \to 0^{+}} \frac{f\left( t + \epsilon \right) + f\left( t - \epsilon \right)}{2},
+\end{equation*}
+where discontinuous points \(\bar{t} \in
+\interval{t_0}{t_0 + T}\) converge to the \textbf{average} of their
+left-hand and right-hand limits. When \(f\) is non-periodic, the
+Fourier series converges to the \textbf{periodic extension} of \(f\).
+The endpoints of the interval may converge non-uniformly, corresponding
+to jump discontinuities in the periodic extension of \(f\).
+\subsection{Orthogonality}
+Both the Taylor series and Fourier series are comprised of an
+\textbf{orthogonal basis}. In this function space, the inner product of
+two functions \(f\left( t \right)\) and \(g\left( t \right)\) is
+defined:
+\begin{equation*}
+    \abracket*{f,\: g} = \int_{t_0}^{t_0 + T} f\left( t \right) g\left( t \right) \odif{t}
+\end{equation*}
+on the interval \(\interval{t_0}{t_0 + T}\). The norm of a function can
+be defined as \(\norm{f} = \sqrt{\abracket*{f,\: f}}\). Using this
+definition, we say that two functions are \textbf{orthogonal} if their
+inner product is zero, and \textbf{orthonormal} if their inner product
+is one.
+
+The Fourier series is defined using an infinite dimensional set of
+orthogonal basis functions:
+\begin{equation*}
+    \left\{ 1, \: \cos{\left( \frac{2\pi n}{T} t \right)}, \: \sin{\left( \frac{2\pi n}{T} t \right)} \right\}
+\end{equation*}
+for all \(n \in \mathbb{N}\). The inner products of these basis
+functions are given by:
+\begin{align*}
+    \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: 1}                                       & = \int_{t_0}^{t_0 + T} \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t} = 0                                         \\
+    \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: 1}                                       & = \int_{t_0}^{t_0 + T} \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t} = 0                                         \\
+    \abracket*{\cos{\left( \frac{2\pi m}{T} t \right)},\: \sin{\left( \frac{2\pi n}{T} t \right)}} & = \int_{t_0}^{t_0 + T} \cos{\left( \frac{2\pi m}{T} t \right)} \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t} = 0 \\
+    \abracket*{\cos{\left( \frac{2\pi m}{T} t \right)},\: \cos{\left( \frac{2\pi n}{T} t \right)}} & =
+    \int_{t_0}^{t_0 + T} \cos{\left( \frac{2\pi m}{T} t \right)} \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t} =
+    \begin{cases}
+        \frac{T}{2}, & m = n    \\
+        0            & m \neq n
+    \end{cases}
+    \\
+    \abracket*{\sin{\left( \frac{2\pi m}{T} t \right)},\: \sin{\left( \frac{2\pi n}{T} t \right)}} & =
+    \int_{t_0}^{t_0 + T} \sin{\left( \frac{2\pi m}{T} t \right)} \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t} =
+    \begin{cases}
+        \frac{T}{2}, & m = n    \\
+        0            & m \neq n
+    \end{cases}
+\end{align*}
+for all \(m\) and \(n\) not equal to zero.
+These results allow us to determine the Fourier series coefficients by
+considering the inner product between \(f\left( t \right)\) and various
+basis functions. For the coefficient \(a_0\), consider the inner product
+of \(f\left( t \right)\) with the constant function \(1\):
+\begin{align*}
+    f\left( t \right)  & = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right)                                                      \\
+    \abracket*{f,\: 1} & = a_0 \abracket*{1,\: 1} + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: 1} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: 1} \right) \\
+    a_0                & = \frac{\abracket*{f,\: 1}}{\abracket*{1,\: 1}} = \frac{1}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \odif{t}
+\end{align*}
+For the coefficients \(a_n\) and \(b_n\), consider the inner product of
+\(f\left( t \right)\) with \(\cos{\left( \frac{2\pi m}{T} t \right)}\)
+and \(\sin{\left( \frac{2\pi m}{T} t \right)}\), respectively. For \(a_n\):
+\begin{align*}
+    f\left( t \right)                                        & = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right)                                                                                                                                     \\
+    \abracket*{f,\: \cos{\left( \frac{2\pi m}{T} t \right)}} & =
+                                                                 \begin{aligned}[t]
+                                                                      & a_0 \abracket*{1,\: \cos{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
+                                                                      & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} \right)
+                                                                 \end{aligned}
+    \\
+    a_m                                                      & = \frac{\abracket*{f,\: \cos{\left( \frac{2\pi m}{T} t \right)}}}{\abracket*{\cos{\left( \frac{2\pi m}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}}} = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \cos{\left( \frac{2\pi m}{T} t \right)} \odif{t}.
+\end{align*}
+For \(b_n\):
+\begin{align*}
+    f\left( t \right)                                        & = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right)                                                                                                                                     \\
+    \abracket*{f,\: \sin{\left( \frac{2\pi m}{T} t \right)}} & =
+                                                                 \begin{aligned}[t]
+                                                                      & a_0 \abracket*{1,\: \sin{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
+                                                                      & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} \right)
+                                                                 \end{aligned}
+    \\
+    b_m                                                      & = \frac{\abracket*{f,\: \sin{\left( \frac{2\pi m}{T} t \right)}}}{\abracket*{\sin{\left( \frac{2\pi m}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}}} = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \sin{\left( \frac{2\pi m}{T} t \right)} \odif{t}.
+\end{align*}
 \end{document}
