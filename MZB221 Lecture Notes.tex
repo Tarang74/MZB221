@@ -278,10 +278,10 @@ and \(\sin{\left( \frac{2\pi m}{T} t \right)}\), respectively. For \(a_n\):
 \begin{align*}
     f\left( t \right)                                        & = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right)                                                                                                                                     \\
     \abracket*{f,\: \cos{\left( \frac{2\pi m}{T} t \right)}} & =
-                                                                 \begin{aligned}[t]
-                                                                      & a_0 \abracket*{1,\: \cos{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
-                                                                      & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} \right)
-                                                                 \end{aligned}
+    \begin{aligned}[t]
+         & a_0 \abracket*{1,\: \cos{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
+         & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}} \right)
+    \end{aligned}
     \\
     a_m                                                      & = \frac{\abracket*{f,\: \cos{\left( \frac{2\pi m}{T} t \right)}}}{\abracket*{\cos{\left( \frac{2\pi m}{T} t \right)},\: \cos{\left( \frac{2\pi m}{T} t \right)}}} = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \cos{\left( \frac{2\pi m}{T} t \right)} \odif{t}.
 \end{align*}
@@ -289,11 +289,104 @@ For \(b_n\):
 \begin{align*}
     f\left( t \right)                                        & = a_0 + \sum_{n=1}^{\infty} \left( a_n \cos{\left( \frac{2\pi n}{T} t \right)} + b_n \sin{\left( \frac{2\pi n}{T} t \right)} \right)                                                                                                                                     \\
     \abracket*{f,\: \sin{\left( \frac{2\pi m}{T} t \right)}} & =
-                                                                 \begin{aligned}[t]
-                                                                      & a_0 \abracket*{1,\: \sin{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
-                                                                      & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} \right)
-                                                                 \end{aligned}
+    \begin{aligned}[t]
+         & a_0 \abracket*{1,\: \sin{\left( \frac{2\pi m}{T} t \right)}}                                                                                                                                                                                 \\
+         & + \sum_{n=1}^{\infty} \left( a_n \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} + b_n \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}} \right)
+    \end{aligned}
     \\
     b_m                                                      & = \frac{\abracket*{f,\: \sin{\left( \frac{2\pi m}{T} t \right)}}}{\abracket*{\sin{\left( \frac{2\pi m}{T} t \right)},\: \sin{\left( \frac{2\pi m}{T} t \right)}}} = \frac{2}{T} \int_{t_0}^{t_0 + T} f\left( t \right) \sin{\left( \frac{2\pi m}{T} t \right)} \odif{t}.
 \end{align*}
+\subsection{Even and Odd Functions}
+A function \(f\left( t \right)\) is \textbf{even} if
+\begin{equation*}
+    f\left( -t \right) = f\left( t \right)
+\end{equation*}
+for all \(t\), and \textbf{odd} if
+\begin{equation*}
+    f\left( -t \right) = -f\left( t \right).
+\end{equation*}
+These functions have a special symmetry property that can be exploited
+when computing integrals:
+\begin{equation*}
+    \int_{-T/2}^{T/2} f\left( t \right) \odif{t} =
+    \begin{cases}
+        2 \displaystyle\int_{0}^{T/2} f\left( t \right) \odif{t}, & \text{if \(f\left( t \right)\) even} \\
+        0,                                                        & \text{if \(f\left( t \right)\) odd}
+    \end{cases}
+\end{equation*}
+In the context of the Fourier series expansion, it is important to note
+that cosine functions are even, and sine functions are odd:
+\begin{align*}
+    \cos{\left( -t \right)} & = \cos{\left( t \right)}  \\
+    \sin{\left( -t \right)} & = -\sin{\left( t \right)}
+\end{align*}
+\subsection{Fourier Cosine Series}
+Suppose \(f\left( t \right)\) is an even function with period \(T\),
+and let us compute the Fourier series of \(f\left( t \right)\) on the
+interval \(\interval{-T/2}{T/2}\). Consider the coefficients \(b_n\):
+\begin{equation*}
+    b_n = \frac{2}{T} \int_{-T/2}^{T/2} f\left( t \right) \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{equation*}
+as \(f\left( t \right)\) is even, the resulting integrand is odd, and
+the integral is zero. This results in a series containing only even
+functions, called the Fourier cosine series expansion of
+\(f\left( t \right)\):
+\begin{align*}
+    f_c\left( t \right) = a_0 + \sum_{n=1}^{\infty} a_n \cos{\left( \frac{2\pi n}{T} t \right)}
+\end{align*}
+with
+\begin{align*}
+    a_0 & = \frac{2}{T} \int_{0}^{T/2} f\left( t \right) \odif{t}                                         \\
+    a_n & = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{align*}
+\subsection{Fourier Sine Series}
+Suppose \(f\left( t \right)\) is an odd function with period \(T\),
+and let us compute the Fourier series of \(f\left( t \right)\) on the
+interval \(\interval{-T/2}{T/2}\). Consider the coefficients \(a_0\)
+and \(a_n\):
+\begin{align*}
+    a_0 & = \frac{1}{T} \int_{-T/2}^{T/2} f\left( t \right) \odif{t} \\
+    a_n & = \frac{2}{T} \int_{-T/2}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{align*}
+as \(f\left( t \right)\) is odd, the resulting integrand is odd for
+both \(a_0\) and \(a_n\), and the integrals are zero. This results in a
+series containing only odd functions, called the Fourier sine series
+expansion of \(f\left( t \right)\):
+\begin{align*}
+    f_s\left( t \right) = \sum_{n=1}^{\infty} b_n \sin{\left( \frac{2\pi n}{T} t \right)}
+\end{align*}
+with
+\begin{align*}
+    b_n & = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{align*}
+\subsection{Half-Range Expansions}
+Suppose a function \(f\left( t \right)\) is defined on the interval
+\(\interval{0}{T}\), that is not necessarily even or odd. We can extend
+this function onto the interval in one of three ways:
+\begin{itemize}
+    \item Fourier series: Extends the function periodically on the
+          interval \(\interval{0}{T}\), with period \(T\).
+    \item Fourier cosine series: Extends the even expansion of the
+          function on the interval \(\interval{-T}{T}\), with period
+          \(2T\).
+    \item Fourier sine series: Extends the odd expansion of the function
+          on the interval \(\interval{-T}{T}\), with period \(2T\).
+\end{itemize}
+Note the period in the even and odd series must be twice the period of
+the original function. This is illustrated in the figures below:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Fourier.pdf}
+    \caption{Fourier series expansion of \(f\left( t \right)\) on the interval \(\interval{0}{T}\), with the period \(T\).} % \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Cosine.pdf}
+    \caption{Fourier cosine series expansion of \(f\left( t \right)\) onto the interval \(\interval{-T}{T}\), with the period \(2T\).} % \label{}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Sine.pdf}
+    \caption{Fourier sine series expansion of \(f\left( t \right)\) onto the interval \(\interval{-T}{T}\), with the period \(2T\).} % \label{}
+\end{figure}
 \end{document}
