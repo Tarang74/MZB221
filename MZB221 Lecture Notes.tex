@@ -4,6 +4,9 @@
 \input{LaTeX-Submodule/template.tex}
 
 % Additional packages & macros
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\divergence}{div}
+\DeclareMathOperator{\curl}{curl}
 
 % Header and footer
 \newcommand{\unitName}{Electrical Engineering Mathematics}
@@ -45,7 +48,8 @@
 \tableofcontents
 \newpage
 %
-\section{Infinite Series}
+\part{Infinite Series}
+\section{Sequences and Series}
 \subsection{Sequences}
 A sequence is an \textbf{ordered list} of numbers
 \begin{equation*}
@@ -121,7 +125,7 @@ Given the infinite series \(\sum_{n=1}^{\infty} {\left( -1
 conditions are met:
 \begin{enumerate}[label=(\arabic*)]
     \item \(b_n > 0\) for all \(n\).
-    \item \(b_{n+1} \leq b_n\) for all \(n\).
+    \item \(b_{n+1} \leqslant b_n\) for all \(n\).
     \item \(\lim_{n \to \infty} b_n = 0\).
 \end{enumerate}
 \section{Taylor Series}
@@ -340,12 +344,12 @@ with
     a_n & = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
 \end{align*}
 \subsection{Fourier Sine Series}
-Suppose \(f\left( t \right)\) is an odd function with period \(T\),
-and let us compute the Fourier series of \(f\left( t \right)\) on the
+Suppose \(f\left( t \right)\) is an odd function with period \(T\), and
+let us compute the Fourier series of \(f\left( t \right)\) on the
 interval \(\interval{-T/2}{T/2}\). Consider the coefficients \(a_0\)
 and \(a_n\):
 \begin{align*}
-    a_0 & = \frac{1}{T} \int_{-T/2}^{T/2} f\left( t \right) \odif{t} \\
+    a_0 & = \frac{1}{T} \int_{-T/2}^{T/2} f\left( t \right) \odif{t}                                         \\
     a_n & = \frac{2}{T} \int_{-T/2}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
 \end{align*}
 as \(f\left( t \right)\) is odd, the resulting integrand is odd for
@@ -369,8 +373,9 @@ this function onto the interval in one of three ways:
     \item Fourier cosine series: Extends the even expansion of the
           function on the interval \(\interval{-T}{T}\), with period
           \(2T\).
-    \item Fourier sine series: Extends the odd expansion of the function
-          on the interval \(\interval{-T}{T}\), with period \(2T\).
+    \item Fourier sine series: Extends the odd expansion of the
+          function on the interval \(\interval{-T}{T}\), with period
+          \(2T\).
 \end{itemize}
 Note the period in the even and odd series must be twice the period of
 the original function. This is illustrated in the figures below:
@@ -389,4 +394,476 @@ the original function. This is illustrated in the figures below:
     \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Sine.pdf}
     \caption{Fourier sine series expansion of \(f\left( t \right)\) onto the interval \(\interval{-T}{T}\), with the period \(2T\).} % \label{}
 \end{figure}
+\part{Vector Calculus}
+\section{Scalar Fields}
+A scalar field is any function \(f : \mathbb{R}^n \to \mathbb{R}\),
+that assigns a scalar value to every vector in \(\mathbb{R}^n\).
+\subsection{Partial Derivatives}
+The partial derivatives of a scalar field are defined as the derivative
+of the function with respect to each variable:
+\begin{equation*}
+    \pdv{f}{x_i} \equiv f_{x_i} = \lim_{h \to 0} \frac{f\left( x_1, \: \ldots, \: x_i + h, \: \ldots, \: x_n \right) - f\left( x_1, \: \ldots, \: x_i, \: \ldots, \: x_n \right)}{h}
+\end{equation*}
+that is, the rate of change of the function in the \(x_i\) direction,
+holding all other variables constant.
+\subsection{Directional Derivatives}
+To find the rate of change of a scalar field \(f\left( x_1, \: \ldots,
+\: x_n \right)\) in the direction of a unit vector \(\mathbf{u} =
+\left[ u_1, \: \ldots, \: u_n \right]\), we can scale the standard
+basis vectors by the components of \(\mathbf{u}\):
+\begin{equation*}
+    D_{\mathbf{u}} f \equiv \pdv{f}{\symbf{u}} = \sum_{i=1}^{n} \pdv{f}{x_i} \frac{u_i}{\norm*{\symbf{u}}}.
+\end{equation*}
+This is known as the \textbf{directional derivative} of \(f\) in the direction of \(\mathbf{u}\).
+\subsection{Gradient}
+The gradient of a scalar field is an operator \(\grad : f \to
+\mathbb{R}^n\) which maps a scalar field \(f\) to a vector field:
+\begin{equation*}
+    \grad{f} \equiv \symbf{\nabla} f = \left[ \pdv{}{x_1}, \: \ldots, \: \pdv{}{x_n} \right].
+\end{equation*}
+We can equivalently write the directional derivative as the dot product
+of the gradient of \(f\) with the unit vector \(\mathbf{u}\):
+\begin{equation*}
+    D_{\mathbf{u}} f = \symbf{\nabla} f \cdot \hat{\mathbf{u}}.
+\end{equation*}
+\subsection{Gradient of a Scalar Field}
+The gradient of a scalar field \(f\) is a vector field that points in
+the direction of the greatest rate of change of \(f\), with magnitude
+equal to the rate of change. That is:
+\begin{itemize}
+    \item \(\symbf{\nabla} f\) points in the direction of greatest increase of \(f\).
+    \item \(-\symbf{\nabla} f\) points in the direction of greatest decrease of \(f\).
+    \item \(\norm*{\symbf{\nabla} f}\) is the rate of increase of \(f\) in that direction.
+\end{itemize}
+\section{Vector Fields}
+A vector field is any function \(\symbf{F} : \mathbb{R}^n \to
+\mathbb{R}^n\), that assigns a vector to every vector in
+\(\mathbb{R}^n\).
+\subsection{Partial Derivatives}
+The partial derivatives of a vector field are defined as the partial
+derivatives of each component of the vector field:
+\begin{equation*}
+    \pdv{\symbf{F}}{x_i} = \symbf{F}_{x_i} = \left[ \pdv{F_1}{x_i}, \: \ldots, \: \pdv{F_n}{x_i} \right]
+\end{equation*}
+\subsection{Divergence}
+The divergence of a vector field is an operator \(\divergence :
+\symbf{F} \to \mathbb{R}\), which maps a vector field \(\symbf{F}\) to
+a scalar:
+\begin{equation*}
+    \divergence \symbf{F} = \symbf{\nabla} \cdot \symbf{F} = \sum_{i=1}^{n} \pdv{F_i}{x_i}.
+\end{equation*}
+The divergence of a vector field measures the rate at which the vector
+field flows out of a point \(P\).
+\begin{itemize}
+    \item When \(\divergence \symbf{F} > 0\), the vector field tends to
+          flows away from \(P\) (source).
+    \item When \(\divergence \symbf{F} < 0\), the vector field tends to
+          flows towards \(P\) (sink).
+    \item When \(\divergence \symbf{F} = 0\), the net flow of the
+          vector field at \(P\) is zero (conservative).
+\end{itemize}
+\subsection{Curl}
+The curl of a vector field is an operator \(\curl : \symbf{F} \to
+\symbf{G}\), which maps a vector field \(\symbf{F} : \mathbb{R}^3 \to
+\mathbb{R}^3\) to another vector field \(\symbf{G} : \mathbb{R}^3 \to
+\mathbb{R}^3\):
+\begin{equation*}
+    \curl \symbf{F} = \symbf{\nabla} \times \symbf{F} =
+    \begin{vmatrix}
+        \symbf{i}              & \symbf{j}              & \symbf{k}              \\
+        \displaystyle\pdv{}{x} & \displaystyle\pdv{}{y} & \displaystyle\pdv{}{z} \\
+        F_1                    & F_2                    & F_3
+    \end{vmatrix}
+    .
+\end{equation*}
+The curl may also be defined for vector fields in \(\mathbb{R}^2\), where
+\(F_3 = 0\). The curl of a vector field measures the rotation of the
+vector field at a point \(P\).
+\begin{itemize}
+    \item When \(\curl \symbf{F} > 0\), the vector field tends to
+          rotate counterclockwise around \(P\).
+    \item When \(\curl \symbf{F} < 0\), the vector field tends to
+          rotate clockwise around \(P\).
+    \item When \(\curl \symbf{F} = 0\), the net rotation of the vector
+          field around \(P\) is zero.
+\end{itemize}
+\section{Multiple Integrals}
+Scalar functions can be integrated over regions in \(\mathbb{R}^n\)
+through multiple integrals.
+\subsection{Double Integrals}
+When integrating over some region \(R\) in \(\mathbb{R}^2\), consider
+the small subregion \(R_{ij}\) with area \(\Delta A_i = \Delta x_i
+\Delta y_i\), so that the double integral of a function \(f\left( x, \:
+y \right)\) over \(R\) is defined as the contribution of each
+subregion:
+\begin{equation*}
+    \iint_{R} f\left( x, \: y \right) \odif{A} = \lim_{N \to \infty} \sum_{i=1}^{N} f\left( x_i, \: y_i \right) \Delta A_i.
+\end{equation*}
+To compute this integral, we must bound the region by two functions
+\(g\) and \(h\) in either the \(x\)- or \(y\)-direction.
+\begin{itemize}
+    \item In the \(y\)-direction, the region is bounded by the curves:
+          \begin{alignat*}{2}
+              g\left( x \right) & \hspace{0.5em} \leqslant \hspace{0.5em} y &  & \hspace{0.5em} \leqslant \hspace{0.5em} h\left( x \right) \\
+              a                 & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} b
+          \end{alignat*}
+          for some functions \(g\left( x \right)\) and \(h\left( x \right)\)
+          so that
+          \begin{equation*}
+              \iint_{R} f\left( x, \: y \right) \odif{A} = \int_a^b \left[ \int_{g\left( x \right)}^{h\left( x \right)} f\left( x, \: y \right) \odif{y} \right] \odif{x}.
+          \end{equation*}
+          Here we are adding up vertical strips of width \(\odif{x}\),
+          where each strips height is given by the distance between
+          \(g\left( x \right)\) and \(h\left( x \right)\), weighted by
+          the function \(f\left( x, \: y \right)\).
+    \item In the \(x\)-direction, the region is bounded by the curves:
+          \begin{alignat*}{2}
+              c                 & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} d                 \\
+              g\left( y \right) & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} h\left( y \right)
+          \end{alignat*}
+          for some functions \(g\left( y \right)\) and \(h\left( y \right)\)
+          so that
+          \begin{equation*}
+              \iint_{R} f\left( x, \: y \right) \odif{A} = \int_c^d \left[ \int_{g\left( y \right)}^{h\left( y \right)} f\left( x, \: y \right) \odif{x} \right] \odif{y}.
+          \end{equation*}
+          Here we are adding up horizontal strips of width \(\odif{y}\),
+          where each strips height is given by the distance between
+          \(g\left( y \right)\) and \(h\left( y \right)\), weighted by
+          the function \(f\left( x, \: y \right)\).
+\end{itemize}
+\subsection{Order of Integration}
+By Fubini's theorem, any permutation of the order of integration of an
+iterated integral is equivalent if the function being integrated is
+integrable, that is if:
+\begin{equation*}
+    \int_R \abs*{f\left( \symbf{x} \right)} \odif{\symbf{x}} < \infty.
+\end{equation*}
+When applying Fubini's theorem, we must appropriately modify the bounds
+of integration to account for the region \(R\). For example, if the region
+is bounded by the curves:
+\begin{equation*}
+    R = \left\{ \left( x, \: y \right) : a \leqslant x \leqslant b, \: g\left( x \right) \leqslant y \leqslant h\left( x \right) \right\},
+\end{equation*}
+where \(g\) and \(h\) are invertible on the interval \(\interval{a}{b}\),
+and the integral of a function \(f\left( x, \: y \right)\) over \(R\)
+is given by:
+\begin{equation*}
+    \iint_R f\left( x, \: y \right) \odif{A} = \int_a^b \left[ \int_{g\left( x \right)}^{h\left( x \right)} f\left( x, \: y \right) \odif{y} \right] \odif{x},
+\end{equation*}
+we can equivalently integrate over the region \(R\) by reversing the
+order of integration:
+\begin{equation*}
+    \iint_R f\left( x, \: y \right) \odif{A} = \int_{g\left( a \right)}^{h\left( b \right)} \left[ \int_{h^{-1}\left( y \right)}^{g^{-1}\left( y \right)} f\left( x, \: y \right) \odif{x} \right] \odif{y}.
+\end{equation*}
+Similarly, if the region is bounded by the curves:
+\begin{equation*}
+    R = \left\{ \left( x, \: y \right) : c \leqslant y \leqslant d, \: g\left( y \right) \leqslant x \leqslant h\left( y \right) \right\},
+\end{equation*}
+we can integrate over the region \(R\) by reversing the order of
+integration:
+\begin{equation*}
+    \iint_R f\left( x, \: y \right) \odif{A} = \int_{g\left( c \right)}^{h\left( d \right)} \left[ \int_{h^{-1}\left( x \right)}^{g^{-1}\left( x \right)} f\left( x, \: y \right) \odif{y} \right] \odif{x}.
+\end{equation*}
+\subsection{Triple Integrals}
+When integrating over some volume \(V\) in \(\mathbb{R}^3\), consider
+the small subregion \(V_{ijk}\) with volume \(\Delta V_i = \Delta x_i
+\Delta y_i \Delta z_i\), so that the triple integral of a function
+\(f\left( x, \: y, \: z \right)\) over \(V\) is defined as the
+contribution of each subregion:
+\begin{equation*}
+    \iiint_{V} f\left( x, \: y, \: z \right) \odif{V} = \lim_{N \to \infty} \sum_{i=1}^{N} f\left( x_i, \: y_i, \: z_i \right) \Delta V_i.
+\end{equation*}
+To compute this integral, we require three intervals for each variable
+\(x\), \(y\), and \(z\), that enclose the volume \(V\). As we introduce
+another dimension, the function bounding the innermost integral may
+depend on both the outer variables. This integral may take the form:
+\begin{equation*}
+    \iiint_{V} f\left( x, \: y, \: z \right) \odif{V} = \int_a^b \left[ \int_c^d \left[ \int_g^h f\left( x, \: y, \: z \right) \odif{z} \right] \odif{y} \right] \odif{x}.
+\end{equation*}
+for the volume enclosed by:
+\begin{equation*}
+    V = \left\{ \left( x, \: y, \: z \right) : a \leqslant x \leqslant b, \: c\left( x \right) \leqslant y \leqslant d\left( x \right), \: g\left( x, \: y \right) \leqslant z \leqslant h\left( x, \: y \right) \right\}.
+\end{equation*}
+Note that the bounds of any integral must not include any variables that
+appear inside that integral. When modifying the order of integration,
+we must ensure the same region is enclosed by the new bounds.
+\subsection{Transformation of Coordinates}
+In single variable calculus, we used a change of variables to simplify
+integration by considering a transformation \(u = S\left( x \right)\),
+to rewrite an integral in terms of \(u\), with the differential:
+\begin{equation*}
+    \odif{x} = \frac{1}{\odv{S\left( x \right)}{x}} \odif{u} = \odv{S^{-1}\left( u \right)}{u} \odif{u}
+\end{equation*}
+where \(x = S^{-1}\left( u \right)\) is the inverse transformation. This
+concept can be extended to integrals with multiple variables by
+considering the inverse transformation
+\(x = T\left( u \right) = S^{-1}\left( u \right)\), where we can use
+the chain rule to find the differential:
+\begin{equation*}
+    \odif{x} = \odv{T\left( u \right)}{u} \odif{u}.
+\end{equation*}
+To transform the coordinates in a multivariable integral, we must consider
+a matrix of all the partial derivatives of a transformation. For the
+transformation \(\symbf{x} = \symbf{T}\left( \symbf{u} \right)\),
+consider the Jacobian matrix of partial derivatives:
+\begin{equation*}
+    \symbf{J} =
+    \begin{bmatrix}
+        \displaystyle\pdv{x_1}{u_1} & \cdots & \displaystyle\pdv{x_1}{u_n} \\
+        \vdots                      & \ddots & \vdots                      \\
+        \displaystyle\pdv{x_n}{u_1} & \cdots & \displaystyle\pdv{x_n}{u_n}
+    \end{bmatrix}
+    .
+\end{equation*}
+The determinant of this matrix is known as the Jacobian of a transformation,
+and it gives us the factor by which the volume of the region is scaled
+under the transformation, giving us the new differential:
+\begin{equation*}
+    \odif{\symbf{x}} = \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
+\end{equation*}
+Therefore, given a bijective transformation \(T : \Omega \subset \R^n \to \Omega'\subset \R^n\),
+where \(T\) has continuous partial derivatives, an integral in
+\(\symbf{x}\) can be transformed to an integral in \(\symbf{u}\) by:
+\begin{equation*}
+    \int_\Omega f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{\Omega'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
+\end{equation*}
+\subsubsection{Polar Coordinates (2D)}
+To transform a Cartesian coordinate system to polar coordinates,
+consider the transformation:
+\begin{align*}
+    x & = r \cos{\theta} & r      & = \sqrt{x^2 + y^2}                    \\
+    y & = r \sin{\theta} & \theta & = \arctan{\left( \frac{y}{x} \right)}
+\end{align*}
+for \(r \geqslant 0\) and \(0 \leqslant \theta \leqslant 2\pi\). This transformation has
+the Jacobian matrix:
+\begin{equation*}
+    \symbf{J} =
+    \begin{bmatrix}
+        \displaystyle\pdv{x}{r} & \displaystyle\pdv{x}{\theta} \\
+        \displaystyle\pdv{y}{r} & \displaystyle\pdv{y}{\theta}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos{\theta} & -r \sin{\theta} \\
+        \sin{\theta} & r \cos{\theta}
+    \end{bmatrix}
+\end{equation*}
+with the determinant:
+\begin{equation*}
+    \abs*{\det{\symbf{J}}} = r \cos^2{\theta} + r \sin^2{\theta} = r.
+\end{equation*}
+Therefore, the differential in polar coordinates is:
+\begin{equation*}
+    \odif{x} \odif{y} = r \odif{r} \odif{\theta},
+\end{equation*}
+giving the integral transformation:
+\begin{equation*}
+    \iint_{R} f\left( x, \: y \right) \odif{x} \odif{y} = \iint_{R'} f\left( r, \: \theta \right) r \odif{r} \odif{\theta}.
+\end{equation*}
+The gradient of this transformation can be computed by applying the
+chain rule:
+\begin{align*}
+    \pdv{}{x} & = \pdv{r}{x} \pdv{}{r} + \pdv{\theta}{x} \pdv{}{\theta} \\
+    \pdv{}{y} & = \pdv{r}{y} \pdv{}{r} + \pdv{\theta}{y} \pdv{}{\theta}
+\end{align*}
+The partial derivatives in these expressions are given by:
+\begin{align*}
+    \pdv{r}{x} & = \frac{x}{r} = \cos{\theta} & \pdv{\theta}{x} & = -\frac{y}{r^2} = -\frac{1}{r}\sin{\theta} \\
+    \pdv{r}{y} & = \frac{y}{r} = \sin{\theta} & \pdv{\theta}{y} & = \frac{x}{r^2} = \frac{1}{r}\cos{\theta}
+\end{align*}
+so that the gradient in polar coordinates is defined:
+\begin{align*}
+    \symbf{\nabla} & = \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y}                                                                                                                                             \\
+                   & = \symbf{e}_x \left[ \cos{\theta} \pdv{}{r} - \frac{1}{r} \sin{\theta} \pdv{}{\theta} \right] + \symbf{e}_y \left[ \sin{\theta} \pdv{}{r} + \frac{1}{r} \cos{\theta} \pdv{}{\theta} \right] \\
+                   & = \left[ \cos{\theta} \symbf{e}_x + \sin{\theta} \symbf{e}_y \right] \pdv{}{r} + \left[ \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x \right] \frac{1}{r} \pdv{}{\theta}              \\
+                   & = \symbf{e}_r \pdv{}{r} + \symbf{e}_\theta \frac{1}{r} \pdv{}{\theta}
+\end{align*}
+giving the transformed basis vectors:
+\begin{align*}
+    \symbf{e}_r      & = \cos{\theta} \symbf{e}_x + \sin{\theta} \symbf{e}_y \\
+    \symbf{e}_\theta & = \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x
+\end{align*}
+\subsubsection{Cylindrical Coordinates (3D)}
+To transform a Cartesian coordinate system to cylindrical coordinates,
+consider the transformation:
+\begin{align*}
+    x & = r \cos{\theta} & r      & = \sqrt{x^2 + y^2}                    \\
+    y & = r \sin{\theta} & \theta & = \arctan{\left( \frac{y}{x} \right)} \\
+    z & = z              & z      & = z
+\end{align*}
+for \(r \geqslant 0\), \(0 \leqslant \theta \leqslant 2\pi\), and \(-\infty < z < \infty\).
+This transformation has the Jacobian matrix:
+\begin{equation*}
+    \symbf{J} =
+    \begin{bmatrix}
+        \displaystyle\pdv{x}{r} & \displaystyle\pdv{x}{\theta} & \displaystyle\pdv{x}{z} \\
+        \displaystyle\pdv{y}{r} & \displaystyle\pdv{y}{\theta} & \displaystyle\pdv{y}{z} \\
+        \displaystyle\pdv{z}{r} & \displaystyle\pdv{z}{\theta} & \displaystyle\pdv{z}{z}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos{\theta} & -r \sin{\theta} & 0 \\
+        \sin{\theta} & r \cos{\theta}  & 0 \\
+        0            & 0               & 1
+    \end{bmatrix}
+\end{equation*}
+with the determinant:
+\begin{equation*}
+    \abs*{\det{\symbf{J}}} = r \cos^2{\theta} + r \sin^2{\theta} = r.
+\end{equation*}
+Therefore, the differential in cylindrical coordinates is:
+\begin{equation*}
+    \odif{x} \odif{y} \odif{z} = r \odif{r} \odif{\theta} \odif{z},
+\end{equation*}
+giving the integral transformation:
+\begin{equation*}
+    \iiint_{V} f\left( x, \: y, \: z \right) \odif{x} \odif{y} \odif{z} = \iiint_{V'} f\left( r, \: \theta, \: z \right) r \odif{r} \odif{\theta} \odif{z}.
+\end{equation*}
+The gradient of this transformation can be computed by applying the
+chain rule:
+\begin{align*}
+    \pdv{}{x} & = \pdv{r}{x} \pdv{}{r} + \pdv{\theta}{x} \pdv{}{\theta} + \pdv{z}{x} \pdv{}{z} \\
+    \pdv{}{y} & = \pdv{r}{y} \pdv{}{r} + \pdv{\theta}{y} \pdv{}{\theta} + \pdv{z}{y} \pdv{}{z} \\
+    \pdv{}{z} & = \pdv{r}{z} \pdv{}{r} + \pdv{\theta}{z} \pdv{}{\theta} + \pdv{z}{z} \pdv{}{z}
+\end{align*}
+The partial derivatives in these expressions are given by:
+\begin{align*}
+    \pdv{r}{x} & = \frac{x}{r} = \cos{\theta} & \pdv{\theta}{x} & = -\frac{y}{r^2} = -\frac{1}{r}\sin{\theta} & \pdv{z}{x} & = 0 \\
+    \pdv{r}{y} & = \frac{y}{r} = \sin{\theta} & \pdv{\theta}{y} & = \frac{x}{r^2} = \frac{1}{r}\cos{\theta}   & \pdv{z}{y} & = 0 \\
+    \pdv{r}{z} & = 0                          & \pdv{\theta}{z} & = 0                                         & \pdv{z}{z} & = 1
+\end{align*}
+so that the gradient in cylindrical coordinates is defined:
+\begin{align*}
+    \symbf{\nabla} & = \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y} + \symbf{e}_z \pdv{}{z}                                                                                                                                             \\
+                   & = \symbf{e}_x \left[ \cos{\theta} \pdv{}{r} - \frac{1}{r} \sin{\theta} \pdv{}{\theta} \right] + \symbf{e}_y \left[ \sin{\theta} \pdv{}{r} + \frac{1}{r} \cos{\theta} \pdv{}{\theta} \right] + \symbf{e}_z \pdv{}{z} \\
+                   & = \left[ \cos{\theta} \symbf{e}_x + \sin{\theta} \symbf{e}_y \right] \pdv{}{r} + \left[ \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x \right] \frac{1}{r} \pdv{}{\theta} + \symbf{e}_z \pdv{}{z}              \\
+                   & = \symbf{e}_r \pdv{}{r} + \symbf{e}_\theta \frac{1}{r} \pdv{}{\theta} + \symbf{e}_z \pdv{}{z}
+\end{align*}
+giving the transformed basis vectors:
+\begin{align*}
+    \symbf{e}_r      & = \cos{\theta} \symbf{e}_x + \sin{\theta} \symbf{e}_y \\
+    \symbf{e}_\theta & = \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x \\
+    \symbf{e}_z      & = \symbf{e}_z
+\end{align*}
+\subsubsection{Spherical Coordinates (3D)}
+To transform a Cartesian coordinate system to spherical coordinates,
+consider the transformation:
+\begin{align*}
+    x & = r \cos{\theta} \sin{\phi} & r      & = \sqrt{x^2 + y^2 + z^2}              \\
+    y & = r \sin{\theta} \sin{\phi} & \theta & = \arctan{\left( \frac{y}{x} \right)} \\
+    z & = r \cos{\phi}              & \phi   & = \arccos{\left( \frac{z}{r} \right)}
+\end{align*}
+for \(r \geqslant 0\), \(0 \leqslant \theta \leqslant 2\pi\), and \(0 \leqslant \phi \leqslant \pi\).
+This transformation has the Jacobian matrix:
+\begin{equation*}
+    \symbf{J} =
+    \begin{bmatrix}
+        \displaystyle\pdv{x}{r} & \displaystyle\pdv{x}{\phi} & \displaystyle\pdv{x}{\theta} \\
+        \displaystyle\pdv{y}{r} & \displaystyle\pdv{y}{\phi} & \displaystyle\pdv{y}{\theta} \\
+        \displaystyle\pdv{z}{r} & \displaystyle\pdv{z}{\phi} & \displaystyle\pdv{z}{\theta}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \cos{\theta} \sin{\phi} & r \cos{\theta} \cos{\phi} & -r \sin{\theta} \sin{\phi} \\
+        \sin{\theta} \sin{\phi} & r \sin{\theta} \cos{\phi} & r \cos{\theta} \sin{\phi}  \\
+        \cos{\phi}              & -r \sin{\phi}             & 0
+    \end{bmatrix}
+\end{equation*}
+with the determinant:
+\begin{equation*}
+    \abs*{\det{\symbf{J}}} = r^2 \sin{\phi}.
+\end{equation*}
+Therefore, the differential in spherical coordinates is:
+\begin{equation*}
+    \odif{x} \odif{y} \odif{z} = r^2 \sin{\phi} \odif{r} \odif{\phi} \odif{\theta},
+\end{equation*}
+giving the integral transformation:
+\begin{equation*}
+    \iiint_{V} f\left( x, \: y, \: z \right) \odif{x} \odif{y} \odif{z} = \iiint_{V'} f\left( r, \: \theta, \: \phi \right) r^2 \sin{\phi} \odif{r} \odif{\theta} \odif{\phi}.
+\end{equation*}
+The gradient of this transformation can be computed by applying the
+chain rule:
+\begin{align*}
+    \pdv{}{x} & = \pdv{r}{x} \pdv{}{r} + \pdv{\phi}{x} \pdv{}{\phi} + \pdv{\theta}{x} \pdv{}{\theta} \\
+    \pdv{}{y} & = \pdv{r}{y} \pdv{}{r} + \pdv{\phi}{y} \pdv{}{\phi} + \pdv{\theta}{y} \pdv{}{\theta} \\
+    \pdv{}{z} & = \pdv{r}{z} \pdv{}{r} + \pdv{\phi}{z} \pdv{}{\phi} + \pdv{\theta}{z} \pdv{}{\theta}
+\end{align*}
+The partial derivatives in these expressions are given by:
+\begin{align*}
+    \pdv{r}{x} & = \frac{x}{r} = \cos{\theta} \sin{\phi} & \pdv{\phi}{x} & = -\frac{z\left( - x r^{-3} \right)}{\sqrt{1 - \frac{z^2}{r^2}}} = \frac{\cos{\theta}\cos{\phi}}{r} & \pdv{\theta}{x} & = -\frac{y}{x^2 + y^2} = -\frac{\sin{\theta}}{r \sin{\phi}} \\
+    \pdv{r}{y} & = \frac{y}{r} = \sin{\theta} \sin{\phi} & \pdv{\phi}{y} & = -\frac{z\left( - y r^{-3} \right)}{\sqrt{1 - \frac{z^2}{r^2}}} = \frac{\sin{\theta}\cos{\phi}}{r} & \pdv{\theta}{y} & = \frac{x}{x^2 + y^2} = \frac{\cos{\theta}}{r \sin{\phi}}   \\
+    \pdv{r}{z} & = \frac{z}{r} = \cos{\phi}              & \pdv{\phi}{z} & = -\frac{\left( r - z^2r^{-1} \right)r^{-2}}{\sqrt{1 - \frac{z^2}{r^2}}} = -\frac{\sin{\phi}}{r}    & \pdv{\theta}{z} & = 0
+\end{align*}
+so that the gradient in spherical coordinates is defined:
+\begin{align*}
+    \symbf{\nabla} & = \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y} + \symbf{e}_z \pdv{}{z}                                                    \\
+                   & =
+    \begin{aligned}[t]
+          & \symbf{e}_x \left[ \cos{\theta} \sin{\phi} \pdv{}{r} + \frac{\cos{\theta}\cos{\phi}}{r} \pdv{}{\phi} - \frac{\sin{\theta}}{r \sin{\phi}} \pdv{}{\theta} \right] \\
+        + & \symbf{e}_y \left[ \sin{\theta} \sin{\phi} \pdv{}{r} + \frac{\sin{\theta}\cos{\phi}}{r} \pdv{}{\phi} + \frac{\cos{\theta}}{r \sin{\phi}} \pdv{}{\theta} \right] \\
+        + & \symbf{e}_z \left[ \cos{\phi} \pdv{}{r} - \frac{\sin{\phi}}{r} \pdv{}{\phi} \right]
+    \end{aligned}
+    \\
+                   & =
+    \begin{aligned}[t]
+          & \left[ \cos{\theta} \sin{\phi} \symbf{e}_x + \sin{\theta} \sin{\phi} \symbf{e}_y + \cos{\phi} \symbf{e}_z \right] \pdv{}{r}              \\
+        + & \left[ \cos{\theta}\cos{\phi} \symbf{e}_x + \sin{\theta}\cos{\phi} \symbf{e}_y - \sin{\phi} \symbf{e}_z \right] \frac{1}{r} \pdv{}{\phi} \\
+        + & \left[ \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x \right] \frac{1}{r \sin{\phi}} \pdv{}{\theta}
+    \end{aligned}
+    \\
+                   & = \symbf{e}_r \pdv{}{r} + \symbf{e}_\phi \frac{1}{r} \pdv{}{\phi} + \symbf{e}_\theta \frac{1}{r \sin{\phi}} \pdv{}{\theta}
+\end{align*}
+giving the transformed basis vectors:
+\begin{align*}
+    \symbf{e}_r      & = \cos{\theta} \sin{\phi} \symbf{e}_x + \sin{\theta} \sin{\phi} \symbf{e}_y + \cos{\phi} \symbf{e}_z \\
+    \symbf{e}_\phi   & = \cos{\theta}\cos{\phi} \symbf{e}_x + \sin{\theta}\cos{\phi} \symbf{e}_y - \sin{\phi} \symbf{e}_z   \\
+    \symbf{e}_\theta & = \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x
+\end{align*}
+\subsection{Physical Interpretation of Integrals}
+
+\section{Line and Surface Integrals}
+For a curve \(\mathscr{C}\) defined by the parametric function
+\(\symbf{r}\left( t \right) = \begin{bmatrix}
+    x\left( t \right) \\
+    y\left( t \right) \\
+    z\left( t \right)
+\end{bmatrix}\)
+on the interval \(a \leqslant t \leqslant b\):
+\begin{itemize}
+    \item \textbf{Arc length}
+          \begin{equation*}
+              s\left( t \right) = \int_a^t \norm*{\symbf{r}'\left( \tau \right)} \odif{\tau}.
+          \end{equation*}
+    \item \textbf{Line Integral over Scalar Field \(f\)}
+          \begin{equation*}
+              \int_{\mathscr{C}} f \odif{s} = \int_{\mathscr{C}} f \odv{s}{t} \odif{t} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}.
+          \end{equation*}
+    \item \textbf{Line Integral over Vector Field \(\symbf{F}\)}
+          \begin{equation*}
+              \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{s}} = \int_{\mathscr{C}} \symbf{F} \cdot \odv{\symbf{s}}{t} \odif{t} = \int_a^b \symbf{F} \cdot \symbf{r}'\left( t \right) \odif{t}.
+          \end{equation*}
+\end{itemize}
+For a surface \(\mathscr{S}\) defined by the parametric function
+\(\symbf{r}\left( s,\: t  \right) = \begin{bmatrix}
+    x\left( s,\: t \right) \\
+    y\left( s,\: t \right) \\
+    z\left( s,\: t \right)
+\end{bmatrix}\)
+on the intervals \(a \leqslant s \leqslant b\) and \(c \leqslant t \leqslant d\):
+\begin{itemize}
+    \item \textbf{Surface Area}
+          \begin{equation*}
+              A = \iint_{\mathscr{S}} \odif{\sigma} = \int_c^d \int_a^b \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+          \end{equation*}
+    \item \textbf{Surface Integral over Scalar Field \(f\)}
+            \begin{equation*}
+                \iint_{\mathscr{S}} f \odif{\sigma} = \int_c^d \int_a^b f \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+            \end{equation*}
+    \item \textbf{Surface Integral over Vector Field \(\symbf{F}\)}
+            \begin{equation*}
+                \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \int_c^d \int_a^b \symbf{F} \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+            \end{equation*}
+\end{itemize}
+where \(\symbf{n} = \symbf{r}_s \times \symbf{r}_t\) is a normal
+vector to the surface.
 \end{document}

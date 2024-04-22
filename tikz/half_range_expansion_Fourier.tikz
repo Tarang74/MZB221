@@ -16,7 +16,7 @@
         axis x line=center,
         axis y line=center,
         xtick={-3, -2, -1, 0, 1, 2, 3},
-        xticklabels={\(-3T\), \(2T\), \(T\), \(0\), \(T\), \(2T\), \(3T\)},
+        xticklabels={\(-3T\), \(-2T\), \(-T\), \(0\), \(T\), \(2T\), \(3T\)},
         xmin=-3.5,
         xmax=3.5,
         ymin=-1.5,
