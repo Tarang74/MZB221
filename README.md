@@ -28,7 +28,9 @@ This repository provides **lecture notes** and **exam notes** for **MZB221 - Ele
 4. Scalar Fields
 5. Vector Fields
 6. Multiple Integrals
-7. Line and Surface Integrals
+7. Line Integrals
+8. Surface Integrals
+9. Fundamental Theorems of Calculus
 
 ---
 
