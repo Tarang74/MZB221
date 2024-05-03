@@ -820,50 +820,278 @@ giving the transformed basis vectors:
     \symbf{e}_\theta & = \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x
 \end{align*}
 \subsection{Physical Interpretation of Integrals}
-
-\section{Line and Surface Integrals}
-For a curve \(\mathscr{C}\) defined by the parametric function
-\(\symbf{r}\left( t \right) = \begin{bmatrix}
-    x\left( t \right) \\
-    y\left( t \right) \\
-    z\left( t \right)
-\end{bmatrix}\)
-on the interval \(a \leqslant t \leqslant b\):
+Integrals can be used to represent various physical quantities.
+\subsubsection{Measures}
+The measure of a region \(R \in \R^n\) is given by the integral of the
+unit density function \(\rho\left( \symbf{x} \right) = 1\) over \(R\):
+\begin{equation*}
+    \mu = \int_R \odif{\symbf{x}}.
+\end{equation*}
 \begin{itemize}
-    \item \textbf{Arc length}
-          \begin{equation*}
-              s\left( t \right) = \int_a^t \norm*{\symbf{r}'\left( \tau \right)} \odif{\tau}.
-          \end{equation*}
-    \item \textbf{Line Integral over Scalar Field \(f\)}
-          \begin{equation*}
-              \int_{\mathscr{C}} f \odif{s} = \int_{\mathscr{C}} f \odv{s}{t} \odif{t} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}.
-          \end{equation*}
-    \item \textbf{Line Integral over Vector Field \(\symbf{F}\)}
-          \begin{equation*}
-              \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{s}} = \int_{\mathscr{C}} \symbf{F} \cdot \odv{\symbf{s}}{t} \odif{t} = \int_a^b \symbf{F} \cdot \symbf{r}'\left( t \right) \odif{t}.
-          \end{equation*}
+    \item In 1D, the measure represents the length of \(R\).
+    \item In 2D, the measure represents the area of \(R\).
+    \item In 3D, the measure represents the volume of \(R\).
 \end{itemize}
-For a surface \(\mathscr{S}\) defined by the parametric function
-\(\symbf{r}\left( s,\: t  \right) = \begin{bmatrix}
-    x\left( s,\: t \right) \\
-    y\left( s,\: t \right) \\
-    z\left( s,\: t \right)
-\end{bmatrix}\)
-on the intervals \(a \leqslant s \leqslant b\) and \(c \leqslant t \leqslant d\):
-\begin{itemize}
-    \item \textbf{Surface Area}
-          \begin{equation*}
-              A = \iint_{\mathscr{S}} \odif{\sigma} = \int_c^d \int_a^b \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
-          \end{equation*}
-    \item \textbf{Surface Integral over Scalar Field \(f\)}
-            \begin{equation*}
-                \iint_{\mathscr{S}} f \odif{\sigma} = \int_c^d \int_a^b f \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
-            \end{equation*}
-    \item \textbf{Surface Integral over Vector Field \(\symbf{F}\)}
-            \begin{equation*}
-                \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \int_c^d \int_a^b \symbf{F} \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
-            \end{equation*}
-\end{itemize}
-where \(\symbf{n} = \symbf{r}_s \times \symbf{r}_t\) is a normal
-vector to the surface.
+\subsubsection{Mass}
+The mass of a region \(R \in \R^n\) is given by the integral of the
+density function \(\rho\left( \symbf{x} \right)\) over \(R\):
+\begin{equation*}
+    M = \int_R \rho\left( \symbf{x} \right) \odif{\symbf{x}}.
+\end{equation*}
+\subsubsection{Centroid}
+The centroid (average position) of a region \(R \in \R^n\) with uniform
+density \(\rho\left( \symbf{x} \right) = 1\) is given by:
+\begin{equation*}
+     \symbf{c} = \frac{1}{\mu} \int_R \symbf{x} \odif{\symbf{x}}.
+\end{equation*}
+\subsubsection{Centre of Mass}
+The centre of mass of a region \(R \in \R^n\) with density function
+\(\rho\left( \symbf{x} \right)\) is given by:
+\begin{equation*}
+    \symbf{c}_{\rho} = \frac{1}{M} \int_R \rho\left( \symbf{x} \right) \symbf{x} \odif{\symbf{x}}.
+\end{equation*}
+\subsubsection{Average Value}
+The average value of a function \(f\left( \symbf{x} \right)\) over a
+region \(R \in \R^n\) is given by:
+\begin{equation*}
+    \bar{f} = \frac{1}{\mu} \int_R f\left( \symbf{x} \right) \odif{\symbf{x}}.
+\end{equation*}
+\section{Line Integrals}
+\subsection{Parametric Curves}
+A path is a continuous function \(\symbf{r}\left( t \right)\) that
+maps a parameter \(t\) to a point in \(\R^n\):
+\begin{equation*}
+    \symbf{r}\left( t \right) = \begin{bmatrix}
+        x_1\left( t \right) \\
+        x_2\left( t \right) \\
+        \vdots              \\
+        x_n\left( t \right)
+    \end{bmatrix}.
+\end{equation*}
+A curve \(\mathscr{C}\) in \(\R^n\) is the set of points corresponding
+to the range of the path \(\symbf{r}\left( t \right)\), where
+\(a \leqslant t \leqslant b\):
+\begin{equation*}
+    \mathscr{C} = \left\{ \symbf{r}\left( t \right) : a \leqslant t \leqslant b \right\}.
+\end{equation*}
+A path is closed if \(\symbf{r}\left( a \right) = \symbf{r}\left( b \right)\).
+The velocity of a path is given by the derivative of the path:
+\begin{equation*}
+    \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) = \begin{bmatrix}
+        x_1'\left( t \right) \\
+        x_2'\left( t \right) \\
+        \vdots               \\
+        x_n'\left( t \right)
+    \end{bmatrix}.
+\end{equation*}
+This allows us to define the speed of the path as the magnitude of the
+velocity:
+\begin{equation*}
+    \norm*{\symbf{v}\left( t \right)} = \norm*{\symbf{r}'\left( t \right)} = \sqrt{x_1'^2 + x_2'^2 + \cdots + x_n'^2}.
+\end{equation*}
+Integrals along paths are called line integrals.
+\subsection{Line Integrals of Scalar Fields}
+Line integrals of scalar fields have the form:
+\begin{equation*}
+    \int_{\mathscr{C}} f \odif{r}
+\end{equation*}
+These integrals represent a weighted sum over the scalar field \(f\)
+along a curve parametrised by the path \(\symbf{r}\left( t \right)\).
+To compute the differential element \(\odif{r}\), consider it's
+relationship with the canonical Euclidean differential elements:
+\begin{equation*}
+    \odif{r}^2 = \sum_{i = 1}^n \odif{x}_i^2 \implies \odif{r} = \sqrt{\sum_{i = 1}^n \odif{x}_i^2} = \sqrt{\sum_{i = 1}^n \left( \odv{x_i}{t} \right)^2} \odif{t} = \norm*{\symbf{r}'\left( t \right)} \odif{t}.
+\end{equation*}
+Using the chain rule, we can also represent the differential element
+\(\odif{r}\) using the form:
+\begin{equation*}
+    \odif{r} = \odv{r}{t} \odif{t}
+\end{equation*}
+so that
+\begin{equation*}
+    \odv{r}{t} = \norm*{\symbf{r}'\left( t \right)}
+\end{equation*}
+represents the speed of the path. Therefore the line integral of \(f\)
+along the curve \(\mathscr{C}\) is given by:
+\begin{equation*}
+    \int_{\mathscr{C}} f \odif{r} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}.
+\end{equation*}
+\subsubsection{Arc Length}
+The arc length of the curve \(\mathscr{C}\) is a function which
+measures the length of the path \(\symbf{r}\left( t \right)\) from
+\(a\) to \(\tau\). It is defined as the line integral of a uniform field:
+\begin{equation*}
+    s\left( \tau \right) = \int_a^\tau \odif{r} = \int_a^\tau \norm*{\symbf{r}'\left( t \right)} \odif{t}.
+\end{equation*}
+The total length of the curve \(\mathscr{C}\) is therefore:
+\begin{equation*}
+    L = s\left( b \right) = \int_{\mathscr{C}} \odif{r} = \int_a^b \norm*{\symbf{r}'\left( t \right)} \odif{t}.
+\end{equation*}
+\subsection{Line Integrals of Vector Fields}
+Line integrals of vector fields have the form:
+\begin{equation*}
+    W = \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}
+\end{equation*}
+These integrals represent the work done by the vector field \(\symbf{F}\)
+along a curve parametrised by the path \(\symbf{r}\left( t \right)\).
+The differential element \(\odif{\symbf{r}}\) can be computed using the
+chain rule:
+\begin{equation*}
+    \odif{\symbf{r}} = \odv{\symbf{r}}{t} \odif{t} = \symbf{r}'\left( t \right) \odif{t}
+\end{equation*}
+where \(\symbf{r}'\left( t \right)\) is the velocity of the path.
+Therefore the line integral of \(\symbf{F}\) along the curve
+\(\mathscr{C}\) is given by:
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}.
+\end{equation*}
+\subsubsection{Circulation}
+When the path \(\symbf{r}\left( t \right)\) is closed, line integrals of
+vector fields along \(\mathscr{C}\) can be denoted as:
+\begin{equation*}
+    \Gamma = \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}
+\end{equation*}
+where \(\Gamma\) is the circulation of the vector field \(\symbf{F}\)
+along \(\mathscr{C}\).
+\subsubsection{Conservative Fields}
+The vector field \(\symbf{F}\) is called conservative when
+\begin{equation*}
+    \symbf{F} = \symbf{\nabla} \phi
+\end{equation*}
+for some scalar function \(\phi\). When \(\symbf{F}\) is conservative,
+the line integral along \(\mathscr{C}\) is path independent:
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_{\mathscr{C}} \symbf{\nabla}\phi \cdot \odif{\symbf{r}} = \int_a^b \symbf{\nabla}\phi\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t} = \int_a^b \odv{\phi\left( \symbf{r}\left( t \right) \right)}{t} \odif{t} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right).
+\end{equation*}
+When \(\symbf{r}\left( t \right)\) is a closed path,
+the circulation is zero:
+\begin{equation*}
+    \Gamma = \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right) = 0.
+\end{equation*}
+\section{Surface Integrals}
+\subsection{Parametric Surfaces}
+Consider the parametric function \(\symbf{r}\left( s,\: t \right)\) that
+maps the parameters \(s\) and \(t\) to a point in \(\R^3\):
+\begin{equation*}
+    \symbf{r}\left( s,\: t \right) = \begin{bmatrix}
+        x\left( s,\: t \right) \\
+        y\left( s,\: t \right) \\
+        z\left( s,\: t \right)
+    \end{bmatrix}
+\end{equation*}
+A surface \(\mathscr{S}\) in \(\R^3\) is the set of points corresponding
+to the range of the parametric function \(\symbf{r}\left( s,\: t \right)\),
+where \(a \leqslant s \leqslant b\) and \(c \leqslant t \leqslant d\):
+\begin{equation*}
+    \mathscr{S} = \left\{ \symbf{r}\left( s,\: t \right) : a \leqslant s \leqslant b, \: c \leqslant t \leqslant d \right\}.
+\end{equation*}
+When the partial derivatives of \(\symbf{r}\) are linearly independent,
+we can define the normal vector to the surface:
+\begin{equation*}
+    \symbf{n} = \symbf{r}_s \times \symbf{r}_t.
+\end{equation*}
+Integrals over surfaces are called surface integrals.
+\subsection{Surface Integrals of Scalar Fields}
+Surface integrals of scalar fields have the form:
+\begin{equation*}
+    \iint_{\mathscr{S}} f \odif{\sigma}
+\end{equation*}
+These integrals represent the weighted area over the scalar field \(f\)
+over the surface parametrised by \(\symbf{r}\left( s,\: t \right)\).
+The differential element \(\odif{\sigma}\) is given by
+\begin{equation*}
+    \odif{\sigma} = \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}
+\end{equation*}
+where \(\norm*{\symbf{r}_s \times \symbf{r}_t}\) represents the area of
+the parallelogram spanned by \(\symbf{r}_s\) and \(\symbf{r}_t\).
+Therefore the surface integral of \(f\) over the surface \(\mathscr{S}\)
+is given by:
+\begin{equation*}
+    \iint_{\mathscr{S}} f \odif{\sigma} = \int_c^d \int_a^b f\left( \symbf{r}\left( s,\: t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+\end{equation*}
+\subsubsection{Surface Area}
+The surface area of the surface \(\mathscr{S}\) is defined as the
+surface integral of a uniform field:
+\begin{equation*}
+    A = \iint_{\mathscr{S}} \odif{\sigma} = \int_c^d \int_a^b \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+\end{equation*}
+\subsection{Surface Integrals of Vector Fields}
+Surface integrals of vector fields have the form:
+\begin{equation*}
+    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}}
+\end{equation*}
+These integrals represent the flux of the vector field \(\symbf{F}\)
+through the surface parametrised by \(\symbf{r}\left( s,\: t \right)\).
+The differential element \(\odif{\symbf{\sigma}}\) is given by
+\begin{equation*}
+    \odif{\symbf{\sigma}} = \hat{\symbf{n}} \odif{\sigma} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}
+\end{equation*}
+where \(\symbf{r}_s \times \symbf{r}_t\) represents the normal vector to
+the surface \(\mathscr{S}\).
+Therefore the surface integral of \(\symbf{F}\) over the surface
+\(\mathscr{S}\) is given by:
+\begin{equation*}
+    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} = \int_c^d \int_a^b \symbf{F}\left( \symbf{r}\left( s,\: t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+\end{equation*}
+Note that this integral represents the outward or inward flow of
+\(\symbf{F}\) through \(\mathscr{S}\), where the direction of flow
+depends on the sign of \(\symbf{n}\).
+\section{Fundamental Theorems of Calculus}
+The three vector calculus operators have corresponding theorems which
+generalise the Fundamental Theorem of Calculus to higher dimensions.
+These results are commonly used to simplify line and surface integrals.
+\subsection{Fundamental Theorem of Calculus Part II}
+Consider the continuously differentiable function
+\(F:\interval{a}{b} \to \R\), then
+\begin{equation*}
+    \int_a^b \odv{F}{x} \odif{x} = F\left( b \right) - F\left( a \right).
+\end{equation*}
+This theorem states that the integral of the derivative of \(F\) is
+equal to the difference of the values of the function at the endpoints.
+\subsection{Fundamental Theorem of Line Integrals (Gradient Theorem)}
+Consider the differentiable scalar function \(\phi:\R^n \to \R\). Let
+\(\mathscr{C}\) be a curve parametrised by \(\symbf{r}\left( t \right)\),
+where \(a \leq t \leq b\), then
+\begin{equation*}
+    \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right).
+\end{equation*}
+This theorem states that line integrals through conservative fields
+\(\symbf{F} = \symbf{\nabla} \phi\) are path independent.
+\subsection{Gauss's Theorem (Divergence Theorem)}
+Consider the closed region \(R \in \R^n\) with boundary \(\partial R\)
+and let \(\symbf{F}:R \to \R^n\) be a continuously differentiable vector
+field in \(R\). Then,
+\begin{equation*}
+    \underbrace{\int \cdots \int_R}_n \left( \symbf{\nabla} \cdot \symbf{F} \right) \odif{\symbf{x}} = \underbrace{\oint \cdots \oint_{\partial R}}_{n-1} \symbf{F} \cdot \odif{\symbf{\sigma}}.
+\end{equation*}
+This theorem states that the volume integral of the divergence of a
+vector field \(\symbf{F}\) over the region \(R\) is equal to the surface
+integral of \(\symbf{F}\) over the boundary \(\partial R\).
+\subsection{Stoke's Theorem (Curl Theorem)}
+Consider the surface \(\mathscr{S}\) parametrised by \(\symbf{r}\left( s,\: t \right)\),
+with boundary \(\partial \mathscr{S}\) oriented positively with respect
+to the normal vector \(\symbf{n}\), and let \(\symbf{F}:\R^3 \to \R^3\)
+be a continuously differentiable vector field in \(\mathscr{S}\). Then,
+\begin{equation*}
+    \iint_{\mathscr{S}} \left( \symbf{\nabla} \times \symbf{F} \right) \cdot \odif{\symbf{\sigma}} = \oint_{\partial \mathscr{S}} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+This theorem states that the surface integral of the curl of a vector
+field over the surface \(\mathscr{S}\) is equal to the line integral of
+\(\symbf{F}\) along the boundary \(\partial \mathscr{S}\).
+\subsection{Green's Theorem}
+Consider the bounded region \(R \in \R^2\) with boundary \(\partial R\)
+oriented positively (traversed in the counterclockwise direction) and
+let \(\symbf{F}:R \to \R^2\) be a continuously differentiable vector
+field in \(\R\). Then,
+\begin{equation*}
+    \iint_R \left( \symbf{\nabla} \times \symbf{F} \right) \odif{A} = \oint_{\partial R} \symbf{F} \cdot \odif{\symbf{r}}.
+\end{equation*}
+This expands to
+\begin{equation*}
+    \iint_R \left( \pdv{\symbf{F}_2}{x} - \pdv{\symbf{F}_1}{y} \right) \odif{x} \odif{y} = \oint_{\partial R} \symbf{F}_1 \odif{x} + \symbf{F}_2 \odif{y}.
+\end{equation*}
+This theorem states that the area integral of the curl of a vector field
+\(\symbf{F}\) is equal to the line integral of \(\symbf{F}\) along the
+boundary \(\partial R\). Green's theorem is a special case of both the
+divergence and curl theorems in 2 dimensions.
 \end{document}
