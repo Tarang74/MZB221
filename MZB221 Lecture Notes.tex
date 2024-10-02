@@ -842,7 +842,7 @@ density function \(\rho\left( \symbf{x} \right)\) over \(R\):
 The centroid (average position) of a region \(R \in \R^n\) with uniform
 density \(\rho\left( \symbf{x} \right) = 1\) is given by:
 \begin{equation*}
-     \symbf{c} = \frac{1}{\mu} \int_R \symbf{x} \odif{\symbf{x}}.
+    \symbf{c} = \frac{1}{\mu} \int_R \symbf{x} \odif{\symbf{x}}.
 \end{equation*}
 \subsubsection{Centre of Mass}
 The centre of mass of a region \(R \in \R^n\) with density function
@@ -858,15 +858,17 @@ region \(R \in \R^n\) is given by:
 \end{equation*}
 \section{Line Integrals}
 \subsection{Parametric Curves}
-A path is a continuous function \(\symbf{r}\left( t \right)\) that
-maps a parameter \(t\) to a point in \(\R^n\):
+A path is a continuous function \(\symbf{r}\left( t \right)\) that maps
+a parameter \(t\) to a point in \(\R^n\):
 \begin{equation*}
-    \symbf{r}\left( t \right) = \begin{bmatrix}
+    \symbf{r}\left( t \right) =
+    \begin{bmatrix}
         x_1\left( t \right) \\
         x_2\left( t \right) \\
         \vdots              \\
         x_n\left( t \right)
-    \end{bmatrix}.
+    \end{bmatrix}
+    .
 \end{equation*}
 A curve \(\mathscr{C}\) in \(\R^n\) is the set of points corresponding
 to the range of the path \(\symbf{r}\left( t \right)\), where
@@ -877,12 +879,14 @@ to the range of the path \(\symbf{r}\left( t \right)\), where
 A path is closed if \(\symbf{r}\left( a \right) = \symbf{r}\left( b \right)\).
 The velocity of a path is given by the derivative of the path:
 \begin{equation*}
-    \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) = \begin{bmatrix}
+    \symbf{v}\left( t \right) = \symbf{r}'\left( t \right) =
+    \begin{bmatrix}
         x_1'\left( t \right) \\
         x_2'\left( t \right) \\
         \vdots               \\
         x_n'\left( t \right)
-    \end{bmatrix}.
+    \end{bmatrix}
+    .
 \end{equation*}
 This allows us to define the speed of the path as the magnitude of the
 velocity:
@@ -919,7 +923,8 @@ along the curve \(\mathscr{C}\) is given by:
 \subsubsection{Arc Length}
 The arc length of the curve \(\mathscr{C}\) is a function which
 measures the length of the path \(\symbf{r}\left( t \right)\) from
-\(a\) to \(\tau\). It is defined as the line integral of a uniform field:
+\(a\) to \(\tau\). It is defined as the line integral of a uniform
+field:
 \begin{equation*}
     s\left( \tau \right) = \int_a^\tau \odif{r} = \int_a^\tau \norm*{\symbf{r}'\left( t \right)} \odif{t}.
 \end{equation*}
@@ -946,8 +951,8 @@ Therefore the line integral of \(\symbf{F}\) along the curve
     \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}.
 \end{equation*}
 \subsubsection{Circulation}
-When the path \(\symbf{r}\left( t \right)\) is closed, line integrals of
-vector fields along \(\mathscr{C}\) can be denoted as:
+When the path \(\symbf{r}\left( t \right)\) is closed, line integrals
+of vector fields along \(\mathscr{C}\) can be denoted as:
 \begin{equation*}
     \Gamma = \oint_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}
 \end{equation*}
@@ -970,10 +975,11 @@ the circulation is zero:
 \end{equation*}
 \section{Surface Integrals}
 \subsection{Parametric Surfaces}
-Consider the parametric function \(\symbf{r}\left( s,\: t \right)\) that
-maps the parameters \(s\) and \(t\) to a point in \(\R^3\):
+Consider the parametric function \(\symbf{r}\left( s,\: t \right)\)
+that maps the parameters \(s\) and \(t\) to a point in \(\R^3\):
 \begin{equation*}
-    \symbf{r}\left( s,\: t \right) = \begin{bmatrix}
+    \symbf{r}\left( s,\: t \right) =
+    \begin{bmatrix}
         x\left( s,\: t \right) \\
         y\left( s,\: t \right) \\
         z\left( s,\: t \right)
@@ -1041,8 +1047,8 @@ The three vector calculus operators have corresponding theorems which
 generalise the Fundamental Theorem of Calculus to higher dimensions.
 These results are commonly used to simplify line and surface integrals.
 \subsection{Fundamental Theorem of Calculus Part II}
-Consider the continuously differentiable function
-\(F:\interval{a}{b} \to \R\), then
+Consider the continuously differentiable function \(F:\interval{a}{b}
+\to \R\), then
 \begin{equation*}
     \int_a^b \odv{F}{x} \odif{x} = F\left( b \right) - F\left( a \right).
 \end{equation*}
@@ -1050,8 +1056,8 @@ This theorem states that the integral of the derivative of \(F\) is
 equal to the difference of the values of the function at the endpoints.
 \subsection{Fundamental Theorem of Line Integrals (Gradient Theorem)}
 Consider the differentiable scalar function \(\phi:\R^n \to \R\). Let
-\(\mathscr{C}\) be a curve parametrised by \(\symbf{r}\left( t \right)\),
-where \(a \leq t \leq b\), then
+\(\mathscr{C}\) be a curve parametrised by \(\symbf{r}\left( t
+\right)\), where \(a \leq t \leq b\), then
 \begin{equation*}
     \int_{\mathscr{C}} \symbf{\nabla} \phi \cdot \odif{\symbf{r}} = \phi\left( \symbf{r}\left( b \right) \right) - \phi\left( \symbf{r}\left( a \right) \right).
 \end{equation*}
@@ -1059,8 +1065,8 @@ This theorem states that line integrals through conservative fields
 \(\symbf{F} = \symbf{\nabla} \phi\) are path independent.
 \subsection{Gauss's Theorem (Divergence Theorem)}
 Consider the closed region \(R \in \R^n\) with boundary \(\partial R\)
-and let \(\symbf{F}:R \to \R^n\) be a continuously differentiable vector
-field in \(R\). Then,
+and let \(\symbf{F}:R \to \R^n\) be a continuously differentiable
+vector field in \(R\). Then,
 \begin{equation*}
     \underbrace{\int \cdots \int_R}_n \left( \symbf{\nabla} \cdot \symbf{F} \right) \odif{\symbf{x}} = \underbrace{\oint \cdots \oint_{\partial R}}_{n-1} \symbf{F} \cdot \odif{\symbf{\sigma}}.
 \end{equation*}
@@ -1068,10 +1074,11 @@ This theorem states that the volume integral of the divergence of a
 vector field \(\symbf{F}\) over the region \(R\) is equal to the surface
 integral of \(\symbf{F}\) over the boundary \(\partial R\).
 \subsection{Stoke's Theorem (Curl Theorem)}
-Consider the surface \(\mathscr{S}\) parametrised by \(\symbf{r}\left( s,\: t \right)\),
-with boundary \(\partial \mathscr{S}\) oriented positively with respect
-to the normal vector \(\symbf{n}\), and let \(\symbf{F}:\R^3 \to \R^3\)
-be a continuously differentiable vector field in \(\mathscr{S}\). Then,
+Consider the surface \(\mathscr{S}\) parametrised by \(\symbf{r}\left(
+s,\: t \right)\), with boundary \(\partial \mathscr{S}\) oriented
+positively with respect to the normal vector \(\symbf{n}\), and let
+\(\symbf{F}:\R^3 \to \R^3\) be a continuously differentiable vector
+field in \(\mathscr{S}\). Then,
 \begin{equation*}
     \iint_{\mathscr{S}} \left( \symbf{\nabla} \times \symbf{F} \right) \cdot \odif{\symbf{\sigma}} = \oint_{\partial \mathscr{S}} \symbf{F} \cdot \odif{\symbf{r}}.
 \end{equation*}
@@ -1094,4 +1101,340 @@ This theorem states that the area integral of the curl of a vector field
 \(\symbf{F}\) is equal to the line integral of \(\symbf{F}\) along the
 boundary \(\partial R\). Green's theorem is a special case of both the
 divergence and curl theorems in 2 dimensions.
+\part{Ordinary Differential Equations}
+\section{Laplace Transform}
+Consider a forced linear constant-coefficient differential equation of
+the form:
+\begin{equation*}
+    a_n y^{\left( n \right)}\left( t \right) + a_{n-1} y^{\left( n-1 \right)}\left( t \right) + \cdots + a_1 y'\left( t \right) + a_0 y\left( t \right) = f\left( t \right)
+\end{equation*}
+with initial conditions \(y\left( 0 \right) = y_0\), \(y'\left( 0 \right) = y_1\), \(\ldots\), \(y^{\left( n-1 \right)}\left( 0 \right) = y_{n-1}\).
+Certain choices of \(f\left( t \right)\) can make the solution to this
+differential equation difficult to determine using methods such as
+undetermined coefficients or variation of parameters, due to the
+complexity of the integrals involved. Here we introduce the Laplace
+transform, which allows us to transform a differential equation into
+an algebraic equation. The Laplace transform of a function
+\(f\left( t \right)\) is defined as:
+\begin{equation*}
+    \mathscr{L}\left\{ f\left( t \right) \right\} \equiv F\left( s \right) = \int_0^\infty f\left( t \right) e^{-st} \odif{t},
+\end{equation*}
+where \(s\) is a complex number. Consider the Laplace transform of
+\(\displaystyle \odv{y\left( t \right)}{t}\):
+\begin{align*}
+    \mathscr{L}\left\{ \odv{y\left( t \right)}{t} \right\} & = \int_0^\infty \odv{y\left( t \right)}{t} e^{-st} \odif{t}                                              \\
+                                                           & = \left. e^{-st} y\left( t \right) \right|_0^\infty + s \int_0^\infty e^{-st} y\left( t \right) \odif{t} \\
+                                                           & = s Y\left( s \right) - y\left( 0 \right).
+\end{align*}
+Now consider the Laplace transform of \(\displaystyle \odv[order=2]{y\left( t \right)}{t}\):
+\begin{align*}
+    \mathscr{L}\left\{ \odv[order=2]{y\left( t \right)}{t} \right\} & = \int_0^\infty \odv[order=2]{y\left( t \right)}{t} e^{-st} \odif{t}                                                                                              \\
+                                                                    & = \left. e^{-st} y'\left( t \right) \right|_0^\infty + \left. s e^{-st} y\left( t \right) \right|_0^\infty + s^2 \int_0^\infty e^{-st} y\left( t \right) \odif{t} \\
+                                                                    & = s^2 Y\left( s \right) - s y\left( 0 \right) - y'\left( 0 \right).
+\end{align*}
+Therefore we can deduce that the Laplace transform of
+\(\displaystyle \odv[order=n]{y\left( t \right)}{t}\) is given by:
+\begin{align*}
+    \mathscr{L}\left\{ \odv[order=n]{y\left( t \right)}{t} \right\} & = s^n Y\left( s \right) - \left[ s^{n-1} y\left( 0 \right) + s^{n-2} y'\left( 0 \right) + \cdots + y^{\left( n-1 \right)}\left( 0 \right) \right] \\
+                                                                    & = s^n Y\left( s \right) - \sum_{k=0}^{n-1} s^{n-1-k} y^{\left( k \right)}\left( 0 \right).
+\end{align*}
+Using this property, we can transform the above differential equation
+into the \(s\)-domain by taking the Laplace transform of both sides,
+allowing us to solve for \(Y\left( s \right)\) algebraically.
+\subsection{Existence of the Laplace Transform}
+A sufficient condition for the existence of the Laplace transform of
+\(f\left( t \right)\) is that \(f\left( t \right)\) is piecewise
+continuous on \(\rinterval{0}{\infty}\) and of exponential order for
+some time \(t > T\). A function \(f\left( t \right)\) is said to be of
+exponential order if after \(t = T\), there exist constants \(M\) and
+\(a\) such that \(\abs*{f\left( t \right)} \leqslant M e^{at}\) for all
+\(t > T\). Such a function satisfies the limit:
+\begin{equation*}
+    \lim_{t \to \infty} e^{at} f\left( t \right) = 0,
+\end{equation*}
+and the Laplace transform exists for \(\Re\left( s \right) > a\).
+\subsection{Inverse Laplace Transform}
+We can recover the original function \(f\left( t \right)\) from its
+Laplace transform \(F\left( s \right)\) by taking the inverse Laplace
+transform which is defined by the following line integral in the
+complex plane:
+\begin{equation*}
+    f\left( t \right) = \mathscr{L}^{-1}\left\{ F\left( s \right) \right\} = \frac{1}{2\pi i} \int_{c - i \infty}^{c + i \infty} F\left( s \right) e^{st} \odif{s},
+\end{equation*}
+where \(c\) is a real number such that the region of integration is to
+the right of all singularities of \(F\left( s \right)\). However, for
+many simple functions, the inverse Laplace transform can be determined
+using partial fraction decomposition and Laplace transform tables.
+\subsection{Heaviside Step Function}
+The Heaviside step function is defined as:
+\begin{equation*}
+    u\left( t - a \right) =
+    \begin{cases}
+        0, & 0 \leqslant t \leqslant a \\
+        1, & t > a
+    \end{cases}
+\end{equation*}
+This function is used to model the behaviour of systems
+with instantaneous responses to a change in input at time \(a\).
+\subsection{Dirac Delta Function}
+To motivate the Dirac delta function, consider the pulse function:
+\begin{equation*}
+    p\left( t - a \right) =
+    \begin{cases}
+        \displaystyle 0,                    & t < a - \adif{t}                                \\
+        \displaystyle \frac{1}{2 \adif{t}}, & a - \adif{t} \leqslant t \leqslant a + \adif{t} \\
+        \displaystyle 0,                    & t > a + \adif{t}
+    \end{cases}
+\end{equation*}
+whose area is equal to 1.
+The Dirac delta function can then be defined as the limit of the pulse
+function as \(\adif{t} \to 0\):
+\begin{equation*}
+    \delta\left( t - a \right) = \lim_{\adif{t} \to 0} p\left( t - a \right).
+\end{equation*}
+This leads to the following properties of the Dirac delta function:
+\begin{gather*}
+    \delta\left( t \right) \simeq
+    \begin{cases}
+        0,      & t \neq a \\
+        \infty, & t = a
+    \end{cases}
+    \\
+    \int_{-\infty}^\infty \delta\left( t - a \right) \odif{t} = 1.
+\end{gather*}
+This implies that
+\begin{equation*}
+    \int_{-\infty}^\infty f\left( t \right) \delta\left( t - a \right) \odif{t} = f\left( a \right).
+\end{equation*}
+The Dirac delta function is used to model impulses in systems. The
+Laplace transform of the Dirac delta function is given by:
+\begin{equation*}
+    \mathscr{L}\left\{ \delta\left( t - a \right) \right\} = e^{-as}.
+\end{equation*}
+\subsection{Shift Theorems}
+The first shift theorem states that:
+\begin{equation*}
+    \mathscr{L}\left\{ e^{at} f\left( t \right) \right\} = F\left( s - a \right).
+\end{equation*}
+The second shift theorem states that:
+\begin{equation*}
+    \mathscr{L}\left\{ u\left( t - a \right) f\left( t - a \right) \right\} = e^{-as} F\left( s \right).
+\end{equation*}
+\subsection{Convolution Theorem}
+The convolution of two functions \(f\left( t \right)\) and \(g\left( t
+\right)\) is defined as:
+\begin{equation*}
+    \left( f * g \right)\left( t \right) = \int_{-\infty}^\infty f\left( \tau \right) g\left( t - \tau \right) \odif{\tau}.
+\end{equation*}
+The convolution theorem allows us to rewrite the convolution of two
+functions in the time as a product of their Laplace transforms:
+\begin{equation*}
+    \mathscr{L}\left\{ \left( f * g \right)\left( t \right) \right\} = F\left( s \right) G\left( s \right).
+\end{equation*}
+\section{Nonlinear ODEs}
+Often nonlinear ordinary differential equations cannot be solved
+analytically and require numerical methods to approximate the solution.
+We can instead consider some qualitative methods to understand the
+behaviour of the solution using stability analysis.
+\subsection{Stability Analysis}
+For an autonomous differential equation of the form:
+\begin{equation*}
+    \odv{x}{t} = f\left( x \right),
+\end{equation*}
+we can define an \textbf{equilibrium point} \(x_e\) as one which
+satisfies \(f\left( x_e \right) = 0\). This point represents a
+state from which the system does not change over time. We can classify
+such points as \textbf{stable} if the system returns to the equilibrium
+point after a small perturbation or \textbf{unstable} if the system
+moves away from the equilibrium point after a small perturbation.
+\subsection{Phase Line Analysis}
+We can visualise this behaviour on a \textbf{phase line}, marking
+regions between equilibrium points with arrows indicating the direction
+in which the system moves over time. This is calculated by finding the
+derivative of \(f\left( x \right)\) in each region. Using this
+information, we can also draw \textbf{solution curves} representing the
+behaviour of the system over time. Here we mark equilibrium points on
+the vertical axis and we draw trajectories to represent the different
+possible behaviours of the system around all equilibrium points over
+time. A system has \textbf{finite-time blow up} if one of these
+trajectories approaches infinity in finite time.
+\subsection{Bifurcation Analysis}
+Consider a parametrised differential equation of the form:
+\begin{equation*}
+    \odv{x}{t} = f\left( x,\: \lambda \right).
+\end{equation*}
+Here we can consider the behaviour of the function \(f\left( x,\: \lambda \right)\)
+when \(\lambda < 0\), \(\lambda = 0\), and \(\lambda > 0\). This lets us
+draw a \textbf{bifurcation diagram} for the system, which shows how the
+equilibrium points change as the parameter \(\lambda\) changes. We can
+depict the stability of these equilibrium points with arrows above and
+below lines representing the equilibrium points.
+\section{System of Differential Equations}
+Consider a two dimensional system of differential equations:
+\begin{align*}
+    \odv{x}{t} & = f\left( x,\: y \right)  \\
+    \odv{y}{t} & = g\left( x,\: y \right).
+\end{align*}
+If we restrict \(f\) and \(g\) to be linear functions of \(x\) and \(y\),
+then we can express this as a system of linear equations:
+\begin{equation*}
+    \odv{\symbf{x}}{t} = \symbf{A} \symbf{x} + \symbf{b}
+\end{equation*}
+where \(\symbf{x} = \left( x\left( t \right),\: y\left( t \right) \right)\).
+As with first-order ODEs, let us first consider the homogeneous part of
+this equation and assume the solution form:
+\begin{equation*}
+    \symbf{x} =
+    \begin{bmatrix}
+        v_1 e^{\lambda t} \\
+        v_2 e^{\lambda t}
+    \end{bmatrix}
+    = \symbf{v} e^{\lambda t}.
+\end{equation*}
+for constants \(v_i\) and \(\lambda\). If we substitute this back into
+the original system, we find the eigenvalue problem:
+\begin{align*}
+    \odv*{\left( \symbf{v} e^{\lambda t} \right)}{t} & = \symbf{A} \symbf{v} e^{\lambda t} \\
+    \lambda \symbf{v} e^{\lambda t}                  & = \symbf{A} \symbf{v} e^{\lambda t} \\
+    \symbf{A} \symbf{v}                              & = \lambda \symbf{v}.
+\end{align*}
+Therefore by solving for the eigenvalues and eigenvectors of \(\symbf{A}\),
+we can determine the general solution to this system of differential
+equations.
+\subsection{Real Distinct Eigenvalues}
+If the eigenvalues of \(\symbf{A}\) are real and distinct, then the
+general solution to the system of differential equations is given by:
+\begin{equation*}
+    \symbf{x} = c_1 \symbf{v}_1 e^{\lambda_1 t} + c_2 \symbf{v}_2 e^{\lambda_2 t}
+\end{equation*}
+where \(\symbf{v}_1\) and \(\symbf{v}_2\) are the eigenvectors of
+\(\symbf{A}\) corresponding to the eigenvalues \(\lambda_1\) and
+\(\lambda_2\), and \(c_1\) and \(c_2\) are constants determined by the
+initial conditions.
+\begin{itemize}
+    \item When \(\lambda_1, \lambda_2 < 0\), the system has a
+          \textbf{stable node} at the origin. The trajectories of the
+          system approach this node as \(t \to \infty\).
+    \item When \(\lambda_1, \lambda_2 > 0\) with \(\lambda_1 >
+          \lambda_2\), the system has an \textbf{unstable node} at the
+          origin. In general \(\symbf{x} \sim c_1 \symbf{v}_1
+          e^{\lambda_1 t}\) as \(t \to \infty\).
+    \item When \(\lambda_1 < 0 < \lambda_2\), the system has a
+          \textbf{saddle point} at the origin. In general, \(\symbf{x}
+          \sim c_2 \symbf{v}_2 e^{\lambda_2 t}\) as \(t \to \infty\),
+          but certain initial conditions can cause trajectories to
+          approach the origin.
+\end{itemize}
+\subsection{Real Repeated Eigenvalues}
+If the eigenvalues of \(\symbf{A}\) are real and repeated, then the
+general solution to the system of differential equations depends on the
+number of linearly independent eigenvectors corresponding to the
+repeated eigenvalue \(\lambda\):
+\begin{itemize}
+    \item If the system has two linearly independent eigenvectors
+          \(\symbf{v}_1\) and \(\symbf{v}_2\), then the general
+          solution is given by:
+          \begin{equation*}
+              \symbf{x} = c_1 \symbf{v}_1 e^{\lambda t} + c_2 \symbf{v}_2 e^{\lambda t}.
+          \end{equation*}
+    \item If the system has only one linearly independent eigenvector
+          \(\symbf{v}\), then the general solution is given by:
+          \begin{equation*}
+              \symbf{x} = c_1 \symbf{v} e^{\lambda t} + c_2 \left( \symbf{v} t + \symbf{w}  \right) e^{\lambda t}.
+          \end{equation*}
+          where \(\symbf{w}\) is a generalised eigenvector that
+          satisfies:
+          \begin{equation*}
+              \left( \symbf{A} - \lambda \symbf{I} \right) \symbf{w} = \symbf{v}.
+          \end{equation*}
+\end{itemize}
+In both cases, the system has a \textbf{degenerate node} at the origin:
+\begin{itemize}
+    \item When \(\lambda < 0\), we have a \textbf{degenerate stable
+          node} at the origin. Trajectories of the system move towards
+          the origin.
+    \item When \(\lambda > 0\), we have a \textbf{degenerate unstable
+          node} at the origin. Trajectories of the system move away
+          from the origin.
+\end{itemize}
+\subsection{Complex Eigenvalues}
+If the eigenvalues of \(\symbf{A}\) are complex, then the general
+solution to the system of differential equations is given by:
+\begin{equation*}
+    \symbf{x} = c_1 \left[ \symbf{w}_1 \cos\left( \beta t \right) - \symbf{w}_2 \sin\left( \beta t \right) \right] e^{\alpha t} + c_2 \left[ \symbf{w}_2 \cos\left( \beta t \right) + \symbf{w}_1 \sin\left( \beta t \right) \right] e^{\alpha t}
+\end{equation*}
+where \(\alpha\) and \(\beta\) are the real and imaginary parts of the
+complex eigenvalues \(\lambda = \alpha \pm i \beta\), with corresponding
+eigenvectors \(\symbf{v}_1\) and \(\symbf{v}_2\), which we have used to
+defined \(\symbf{w}_1 = \left( \symbf{v}_1 + \symbf{v}_2 \right) / 2\)
+and \(\symbf{w}_2 = \left( \symbf{v}_1 - \symbf{v}_2 \right) / 2i\).
+\begin{itemize}
+    \item When \(\alpha < 0\), the system has a \textbf{stable spiral}
+          (source) at the origin and trajectories of the system spiral
+          inwards towards. In this case, the solution oscillates and
+          decays as \(t \to \infty\).
+    \item When \(\alpha > 0\), the system has an \textbf{unstable
+          spiral} (sink) at the origin and trajectories of the system
+          spiral outwards. In this case, the solution oscillates and
+          grows exponentially as \(t \to \infty\).
+    \item When \(\alpha = 0\), the system has a \textbf{centre} at the
+          origin and trajectories of the system spiral around the
+          origin without growth or decay. In this case, the solution
+          oscillates indefinitely.
+\end{itemize}
+The orientation of this spiral is determined by finding the direction of
+the system near the origin by evaluating \(\symbf{A} \symbf{x}_0\)
+for some small vector \(\symbf{x}_0\).
+\subsection{Nonlinear Systems}
+As in the case of a single nonlinear differential equation, we can use
+qualitative methods to understand the behaviour of solutions to a
+nonlinear system of differential equations. Consider the
+two-dimensional system of differential equations introduced earlier:
+\begin{align*}
+    \odv{x}{t} & = f\left( x,\: y \right)  \\
+    \odv{y}{t} & = g\left( x,\: y \right).
+\end{align*}
+Equilibrium points for this system are defined as points \(\left( x_e,\: y_e \right)\)
+that satisfy \(f\left( x_e,\: y_e \right) = 0\) and \(g\left( x_e,\: y_e \right) = 0\).
+If we consider the small region around an equilibrium point
+\(\left( x_e,\: y_e \right)\), we can analyse the local behaviour of
+the system by linearising the system about this point. This involves
+using a first-order Taylor series approximation of the system near the
+equilibrium point:
+\begin{align*}
+    f\left( x,\: y \right) & \approx f\left( x_e,\: y_e \right) + \pdv{f}{x}\left( x - x_e \right) + \pdv{f}{y}\left( y - y_e \right)  \\
+    g\left( x,\: y \right) & \approx g\left( x_e,\: y_e \right) + \pdv{g}{x}\left( x - x_e \right) + \pdv{g}{y}\left( y - y_e \right).
+\end{align*}
+Substituting this back into the system, we obtain the linearised system:
+\begin{equation*}
+    \odv*{\begin{bmatrix}
+        x - x_e \\
+        y - y_e
+    \end{bmatrix}}{t} =
+    \begin{bmatrix}
+        \displaystyle \pdv{f}{x} & \displaystyle \pdv{f}{y} \\[2ex]
+        \displaystyle \pdv{g}{x} & \displaystyle \pdv{g}{y}
+    \end{bmatrix}
+    _{\left( x_e,\: y_e \right)}
+    \begin{bmatrix}
+        x - x_e \\
+        y - y_e
+    \end{bmatrix}
+    \iff \odv*{\left( \symbf{x} - \symbf{x}_e \right)}{t} = \symbf{J} \left( \symbf{x} - \symbf{x}_e \right)
+\end{equation*}
+where \(\symbf{J}\) is the Jacobian matrix of the system evaluated at
+the equilibrium point \(\left( x_e,\: y_e \right)\). We can then find
+the local behaviour of the system by finding the eigenvalues of
+\(\symbf{J}\) for each equilibrium point.
+\subsection{Phase Plane Analysis}
+Using the above information, we can draw a \textbf{phase plane} to
+visualise the behaviour of the system over time. Here the horizontal
+axis represents the change in \(x\) and the vertical axis represents
+the change in \(y\). We mark equilibrium points on the phase plane and
+draw eigenvectors from these points to represent the trajectory of the
+system near equilibrium points. The direction of trajectories along
+eigenvectors is determined by the sign of the corresponding eigenvalues.
+
+We can also draw \textbf{nullclines} on the phase plane, which are
+curves where one of \(f\) or \(g\) is equal to zero.
 \end{document}
