@@ -1,0 +1,67 @@
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
+\documentclass{standalone}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont{TeX Gyre Pagella Math}[range={bb,bbit}, Scale=MatchUppercase]
+
+\usepackage[x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis x line=center,
+        axis y line=center,
+        xlabel={\(\lambda\)},
+        ylabel={\(x\)},
+        xtick={-0.25},
+        xmin=-1,
+        xmax=1,
+        ymin=-1,
+        ymax=1.5,
+        ytick={0.5, 1},
+        width=1\textwidth,
+        height=0.8\textwidth,
+        unbounded coords=jump,
+        legend pos=north west
+    ] % 0.125
+        \addplot[color=DeepPink1, line width=1pt] table [x=x, y=y, col sep=comma] {tikz/bifurcation_stable.csv};
+        \addplot[color=DeepPink1, dashed, line width=1pt] table [x=x, y=y, col sep=comma] {tikz/bifurcation_unstable.csv};
+        \draw[fill=DeepPink1] (axis cs:-0.25, 0.5) circle [radius=0.04cm];
+        \draw[fill=DeepPink1] (axis cs:0, 0) circle [radius=0.04cm];
+        \draw[fill=DeepPink1] (axis cs:0, 1) circle [radius=0.04cm];
+        % lambda = -1
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.75, 1.375) -- (axis cs:-0.75, 0.125);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.75, -0.875) -- (axis cs:-0.75, -0.125);
+        % lambda = -0.5
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.5, 1.375) -- (axis cs:-0.5, 0.125);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.5, -0.875) -- (axis cs:-0.5, -0.125);
+        % lambda = -0.25
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.25, 1.375) -- (axis cs:-0.25, 0.625);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.25, 0.375) -- (axis cs:-0.25, 0.125);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:-0.25, -0.875) -- (axis cs:-0.25, -0.125);
+        % lambda = 0
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0, 1.375) -- (axis cs:0, 1.125);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0, 0.125) -- (axis cs:0, 0.875);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0, -0.875) -- (axis cs:0, -0.125);
+        % lambda = 0.25
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.25, 1.375) -- (axis cs:0.25, 1.332106781186547);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.25, 0.125) -- (axis cs:0.25, 1.082106781186547);
+        % \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.25, -0.082106781186548) -- (axis cs:0.25, -0.125);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.25, -0.875) -- (axis cs:0.25, -0.332106781186548);
+        % lambda = 0.5
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.5, 0.125) -- (axis cs:0.5, 1.241025403784439);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.5, -0.125) -- (axis cs:0.5, -0.241025403784439);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.5, -0.875) -- (axis cs:0.5, -0.491025403784439);
+        % lambda = 0.75
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.75, 0.125) -- (axis cs:0.75, 1.375);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.75, -0.125) -- (axis cs:0.75, -0.375);
+        \draw[color=DodgerBlue2, ->, line width=1pt] (axis cs:0.75, -0.875) -- (axis cs:0.75, -0.625);
+        \legend{Stable, Unstable};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

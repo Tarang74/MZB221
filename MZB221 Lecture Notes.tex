@@ -173,7 +173,7 @@ A power series may converge in one of three ways:
 For elementary functions, the Taylor series converges to the function
 everywhere within the radius of convergence.
 \subsection{Common Taylor Series}
-Below are a list of common Taylor series expansions:
+Below is a list of common Taylor series expansions:
 \begin{table}[H]
     \centering
     \begin{tabular}{c c c}
@@ -240,8 +240,7 @@ be defined as \(\norm{f} = \sqrt{\abracket*{f,\: f}}\). Using this
 definition, we say that two functions are \textbf{orthogonal} if their
 inner product is zero, and \textbf{orthonormal} if their inner product
 is one.
-
-The Fourier series is defined using an infinite dimensional set of
+The Fourier series is defined using an infinite-dimensional set of
 orthogonal basis functions:
 \begin{equation*}
     \left\{ 1, \: \cos{\left( \frac{2\pi n}{T} t \right)}, \: \sin{\left( \frac{2\pi n}{T} t \right)} \right\}
@@ -378,7 +377,8 @@ this function onto the interval in one of three ways:
           \(2T\).
 \end{itemize}
 Note the period in the even and odd series must be twice the period of
-the original function. This is illustrated in the figures below:
+the original function. This is illustrated in the figures below for the
+function \(f\left( t \right) = t^2\) on the interval \(\interval{0}{T}\):
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Fourier.pdf}
@@ -456,7 +456,7 @@ The divergence of a vector field measures the rate at which the vector
 field flows out of a point \(P\).
 \begin{itemize}
     \item When \(\divergence \symbf{F} > 0\), the vector field tends to
-          flows away from \(P\) (source).
+          flow away from \(P\) (source).
     \item When \(\divergence \symbf{F} < 0\), the vector field tends to
           flows towards \(P\) (sink).
     \item When \(\divergence \symbf{F} = 0\), the net flow of the
@@ -578,7 +578,7 @@ To compute this integral, we require three intervals for each variable
 another dimension, the function bounding the innermost integral may
 depend on both the outer variables. This integral may take the form:
 \begin{equation*}
-    \iiint_{V} f\left( x, \: y, \: z \right) \odif{V} = \int_a^b \left[ \int_c^d \left[ \int_g^h f\left( x, \: y, \: z \right) \odif{z} \right] \odif{y} \right] \odif{x}.
+    \iiint_{V} f\left( x, \: y, \: z \right) \odif{V} = \int_a^b \left[ \int_c^d \left[ \int_g^h f\left( x, \: y, \: z \right) \odif{z} \right] \odif{y} \right] \odif{x}
 \end{equation*}
 for the volume enclosed by:
 \begin{equation*}
@@ -901,7 +901,7 @@ Line integrals of scalar fields have the form:
 \end{equation*}
 These integrals represent a weighted sum over the scalar field \(f\)
 along a curve parametrised by the path \(\symbf{r}\left( t \right)\).
-To compute the differential element \(\odif{r}\), consider it's
+To compute the differential element \(\odif{r}\), consider its
 relationship with the canonical Euclidean differential elements:
 \begin{equation*}
     \odif{r}^2 = \sum_{i = 1}^n \odif{x}_i^2 \implies \odif{r} = \sqrt{\sum_{i = 1}^n \odif{x}_i^2} = \sqrt{\sum_{i = 1}^n \left( \odv{x_i}{t} \right)^2} \odif{t} = \norm*{\symbf{r}'\left( t \right)} \odif{t}.
@@ -915,7 +915,7 @@ so that
 \begin{equation*}
     \odv{r}{t} = \norm*{\symbf{r}'\left( t \right)}
 \end{equation*}
-represents the speed of the path. Therefore the line integral of \(f\)
+represents the speed of the path. Therefore, the line integral of \(f\)
 along the curve \(\mathscr{C}\) is given by:
 \begin{equation*}
     \int_{\mathscr{C}} f \odif{r} = \int_a^b f\left( \symbf{r}\left( t \right) \right) \norm*{\symbf{r}'\left( t \right)} \odif{t}.
@@ -945,7 +945,7 @@ chain rule:
     \odif{\symbf{r}} = \odv{\symbf{r}}{t} \odif{t} = \symbf{r}'\left( t \right) \odif{t}
 \end{equation*}
 where \(\symbf{r}'\left( t \right)\) is the velocity of the path.
-Therefore the line integral of \(\symbf{F}\) along the curve
+Therefore, the line integral of \(\symbf{F}\) along the curve
 \(\mathscr{C}\) is given by:
 \begin{equation*}
     \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}.
@@ -1010,7 +1010,7 @@ The differential element \(\odif{\sigma}\) is given by
 \end{equation*}
 where \(\norm*{\symbf{r}_s \times \symbf{r}_t}\) represents the area of
 the parallelogram spanned by \(\symbf{r}_s\) and \(\symbf{r}_t\).
-Therefore the surface integral of \(f\) over the surface \(\mathscr{S}\)
+Therefore, the surface integral of \(f\) over the surface \(\mathscr{S}\)
 is given by:
 \begin{equation*}
     \iint_{\mathscr{S}} f \odif{\sigma} = \int_c^d \int_a^b f\left( \symbf{r}\left( s,\: t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
@@ -1034,7 +1034,7 @@ The differential element \(\odif{\symbf{\sigma}}\) is given by
 \end{equation*}
 where \(\symbf{r}_s \times \symbf{r}_t\) represents the normal vector to
 the surface \(\mathscr{S}\).
-Therefore the surface integral of \(\symbf{F}\) over the surface
+Therefore, the surface integral of \(\symbf{F}\) over the surface
 \(\mathscr{S}\) is given by:
 \begin{equation*}
     \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} = \int_c^d \int_a^b \symbf{F}\left( \symbf{r}\left( s,\: t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
@@ -1132,7 +1132,7 @@ Now consider the Laplace transform of \(\displaystyle \odv[order=2]{y\left( t \r
                                                                     & = \left. e^{-st} y'\left( t \right) \right|_0^\infty + \left. s e^{-st} y\left( t \right) \right|_0^\infty + s^2 \int_0^\infty e^{-st} y\left( t \right) \odif{t} \\
                                                                     & = s^2 Y\left( s \right) - s y\left( 0 \right) - y'\left( 0 \right).
 \end{align*}
-Therefore we can deduce that the Laplace transform of
+Therefore, we can deduce that the Laplace transform of
 \(\displaystyle \odv[order=n]{y\left( t \right)}{t}\) is given by:
 \begin{align*}
     \mathscr{L}\left\{ \odv[order=n]{y\left( t \right)}{t} \right\} & = s^n Y\left( s \right) - \left[ s^{n-1} y\left( 0 \right) + s^{n-2} y'\left( 0 \right) + \cdots + y^{\left( n-1 \right)}\left( 0 \right) \right] \\
@@ -1234,43 +1234,145 @@ functions in the time as a product of their Laplace transforms:
 \section{Nonlinear ODEs}
 Often nonlinear ordinary differential equations cannot be solved
 analytically and require numerical methods to approximate the solution.
-We can instead consider some qualitative methods to understand the
-behaviour of the solution using stability analysis.
+In such cases, we instead consider qualitative methods to understand
+the behaviour of the solution using stability analysis.
 \subsection{Stability Analysis}
 For an autonomous differential equation of the form:
 \begin{equation*}
-    \odv{x}{t} = f\left( x \right),
+    \odv{x}{t} = g\left( x \right),
 \end{equation*}
 we can define an \textbf{equilibrium point} \(x_e\) as one which
-satisfies \(f\left( x_e \right) = 0\). This point represents a
+satisfies \(g\left( x_e \right) = 0\). This point represents a
 state from which the system does not change over time. We can classify
-such points as \textbf{stable} if the system returns to the equilibrium
-point after a small perturbation or \textbf{unstable} if the system
-moves away from the equilibrium point after a small perturbation.
+such points as:
+\begin{itemize}
+    \item \textbf{stable} if the solution converges to the equilibrium
+          point. Small perturbations in the solution eventually
+          cause the system to return to the equilibrium point.
+    \item \textbf{unstable} if the solution diverges from the
+          equilibrium point. Small perturbations in the solution
+          eventually cause the system to diverge from the
+          equilibrium point.
+    \item \textbf{semi-stable} if the solution converges to the
+          equilibrium point from one side, but diverges from the
+          equilibrium point from the other side.
+\end{itemize}
 \subsection{Phase Line Analysis}
 We can visualise this behaviour on a \textbf{phase line}, marking
 regions between equilibrium points with arrows indicating the direction
-in which the system moves over time. This is calculated by finding the
-derivative of \(f\left( x \right)\) in each region. Using this
-information, we can also draw \textbf{solution curves} representing the
-behaviour of the system over time. Here we mark equilibrium points on
-the vertical axis and we draw trajectories to represent the different
+of the system over time. In this graph, we draw a vertical line
+representing the solution \(x\), marking equilibrium points along this
+line. The direction of the system is calculated by considering the sign
+of \(\odv{x}{t}\) in each region between equilibrium points:
+\begin{itemize}
+    \item If \(\odv{x}{t} > 0\), then \(x\) is increasing in that
+          region.
+    \item If \(\odv{x}{t} < 0\), then \(x\) is decreasing in that
+          region.
+\end{itemize}
+We can also determine this visually by constructing a
+\textbf{phase portrait} of the system by plotting \(g\left( x \right)\)
+against \(x\). We can then determine the sign of \(\odv{x}{t}\) in each
+region by looking at when the function \(g\left( x \right)\) is positive
+or negative. A phase portrait and phase line of the system
+\(\odv{x}{t} = -x^4 - x^3 - x^2 - x = -x \left( x + 1 \right) \left( x - 1 \right)^2\) is shown below:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/phase_line_analysis.pdf}
+    \caption{Phase line analysis of the system \(\odv{x}{t} = -x^4 - x^3 - x^2 - x\).
+        \(x_e = 1\) is a semi-stable equilibrium point, \(x_e = 0\) is a stable
+        equilibrium point, and \(x_e = -1\) is an unstable equilibrium point.}
+\end{figure}
+The solution to this system is an implicit function:
+\begin{equation*}
+    g\left( x \right) = x \left( x+1 \right)^{-1/4} \left( x-1 \right)^{-3/4} \exp\left( -\frac{1}{2\left( x-1 \right)} \right) = A e^{-t},
+\end{equation*}
+where \(A\) solves the initial condition \(x\left( 0 \right) = x_0\):
+\begin{equation*}
+    A = x_0 \left( x_0 + 1 \right)^{-1/4} \left( x_0 - 1 \right)^{-3/4} \exp\left( -\frac{1}{2\left( x_0 - 1 \right)} \right).
+\end{equation*}
+\subsection{Solution Curves}
+This analysis allows us to construct \textbf{solution curves} for a
+system, which are curves in the \(x\)-\(t\) plane that represent the
+solution \(x\) as a function of time \(t\). Here we mark equilibrium
+points on the vertical axis, and draw trajectories to represent the
 possible behaviours of the system around all equilibrium points over
 time. A system has \textbf{finite-time blow up} if one of these
-trajectories approaches infinity in finite time.
+trajectories approaches infinity in finite time. This time often
+depends on the initial condition. The solution curves for the system
+\(\odv{x}{t} = -x^4 - x^3 - x^2 - x\) are shown below:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/solution_curve_analysis.pdf}
+    \caption{Solution curves of the system \(\odv{x}{t} = -x^4 - x^3 - x^2 - x\).
+        The system experiences finite-time blow up for the time \(t_c\) at which
+        \(g\left( x \right)\) is singular.}
+\end{figure}
 \subsection{Bifurcation Analysis}
 Consider a parametrised differential equation of the form:
 \begin{equation*}
-    \odv{x}{t} = f\left( x,\: \lambda \right).
+    \odv{x}{t} = g\left( x,\: \lambda \right).
 \end{equation*}
-Here we can consider the behaviour of the function \(f\left( x,\: \lambda \right)\)
-when \(\lambda < 0\), \(\lambda = 0\), and \(\lambda > 0\). This lets us
-draw a \textbf{bifurcation diagram} for the system, which shows how the
-equilibrium points change as the parameter \(\lambda\) changes. We can
-depict the stability of these equilibrium points with arrows above and
-below lines representing the equilibrium points.
+Here we consider the behaviour of the function
+\(g\left( x,\: \lambda \right)\) as a function of the parameter
+\(\lambda\). We make note of special values of \(\lambda\) at which the
+equilibrium points \(x_e\) change, for example, \(\lambda < 0\),
+\(\lambda = 0\), and \(\lambda > 0\). This lets us draw a
+\textbf{bifurcation diagram} for the system by plotting the contour
+\(g\left( x,\: \lambda \right) = 0\) on an \(x\)-\(\lambda\) plane, which shows
+how equilibrium points evolve as the parameter \(\lambda\) is varied. We
+can depict the stability of these contours by drawing vertical arrows
+above and below lines, or by using solid and dashed lines. Here, solid
+lines represent stable equilibrium points, while dashed lines represent
+unstable equilibrium points.
+\subsection{Stability Analysis Example}
+Consider the following nonlinear parametrised differential equation:
+\begin{equation*}
+    \odv{x}{t} = g\left( x,\: \lambda \right) = \lambda x + x^2 - x^3.
+\end{equation*}
+We can find equilibrium points \(x_e\) by solving:
+\begin{equation*}
+    \odv{x}{t} = 0 \implies \lambda x + x^2 - x^3 = 0.
+\end{equation*}
+This gives us three equilibrium points:
+\begin{equation*}
+    x_{e1} = 0,\: x_{e2} = \frac{1 - \sqrt{1 + 4\lambda}}{2},\: x_{e3} = \frac{1 + \sqrt{1 + 4\lambda}}{2}.
+\end{equation*}
+To classify the stability of these points, we must consider how the
+function \(g\left( x,\: \lambda \right)\) behaves for various values of
+\(\lambda\). For this analysis, we will consider the following cases:
+\begin{itemize}
+    \item \(\lambda < -1/4\): The discriminant \(1 + 4 \lambda\) is
+          negative, so the system only has one equilibrium point
+          \(x_e = 0\).
+    \item \(\lambda = -1/4\): The discriminant \(1 + 4 \lambda\) is
+          zero, so the system has two equilibrium points
+          \(x_{e1} = 0\) and \(x_{e2} = 1/2\) with multiplicity 2.
+    \item \(-1/4 < \lambda < 0\): The discriminant \(1 + 4 \lambda\) is
+          positive, and the system has three equilibrium points.
+    \item \(\lambda = 0\): The discriminant \(1 + 4 \lambda\) is
+          positive, but one of the roots is zero, so the system has two
+          equilibrium points \(x_{e1} = 0\) with multiplicity 2 and
+          \(x_{e2} = 1/2\).
+    \item \(0 < \lambda < 1/4\): The discriminant \(1 + 4 \lambda\) is
+          positive, and the system has three equilibrium points.
+\end{itemize}
+A plot of each of these cases is shown below:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{figures/parametrised_phase_line.pdf}
+    \caption{Behaviour of the system \(\odv{x}{t} = \lambda x + x^2 - x^3\) for various values of \(\lambda\).}
+\end{figure}
+From these plots, we can identify the stability of each region on 5
+phase lines or draw these directly onto a bifurcation diagram.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.8\linewidth]{figures/bifurcation_diagram.pdf}
+    \caption{Bifurcation diagram of the system \(\odv{x}{t} = \lambda x + x^2 - x^3\).} % \label{}
+\end{figure}
+
 \section{System of Differential Equations}
-Consider a two dimensional system of differential equations:
+Consider a two-dimensional system of differential equations:
 \begin{align*}
     \odv{x}{t} & = f\left( x,\: y \right)  \\
     \odv{y}{t} & = g\left( x,\: y \right).
@@ -1289,7 +1391,7 @@ this equation and assume the solution form:
         v_1 e^{\lambda t} \\
         v_2 e^{\lambda t}
     \end{bmatrix}
-    = \symbf{v} e^{\lambda t}.
+    = \symbf{v} e^{\lambda t}
 \end{equation*}
 for constants \(v_i\) and \(\lambda\). If we substitute this back into
 the original system, we find the eigenvalue problem:
@@ -1298,7 +1400,7 @@ the original system, we find the eigenvalue problem:
     \lambda \symbf{v} e^{\lambda t}                  & = \symbf{A} \symbf{v} e^{\lambda t} \\
     \symbf{A} \symbf{v}                              & = \lambda \symbf{v}.
 \end{align*}
-Therefore by solving for the eigenvalues and eigenvectors of \(\symbf{A}\),
+Therefore, by solving for the eigenvalues and eigenvectors of \(\symbf{A}\),
 we can determine the general solution to this system of differential
 equations.
 \subsection{Real Distinct Eigenvalues}
@@ -1340,7 +1442,7 @@ repeated eigenvalue \(\lambda\):
     \item If the system has only one linearly independent eigenvector
           \(\symbf{v}\), then the general solution is given by:
           \begin{equation*}
-              \symbf{x} = c_1 \symbf{v} e^{\lambda t} + c_2 \left( \symbf{v} t + \symbf{w}  \right) e^{\lambda t}.
+              \symbf{x} = c_1 \symbf{v} e^{\lambda t} + c_2 \left( \symbf{v} t + \symbf{w}  \right) e^{\lambda t}
           \end{equation*}
           where \(\symbf{w}\) is a generalised eigenvector that
           satisfies:
@@ -1407,10 +1509,12 @@ equilibrium point:
 \end{align*}
 Substituting this back into the system, we obtain the linearised system:
 \begin{equation*}
-    \odv*{\begin{bmatrix}
-        x - x_e \\
-        y - y_e
-    \end{bmatrix}}{t} =
+    \odv*{
+        \begin{bmatrix}
+            x - x_e \\
+            y - y_e
+        \end{bmatrix}
+    }{t} =
     \begin{bmatrix}
         \displaystyle \pdv{f}{x} & \displaystyle \pdv{f}{y} \\[2ex]
         \displaystyle \pdv{g}{x} & \displaystyle \pdv{g}{y}
@@ -1433,7 +1537,8 @@ axis represents the change in \(x\) and the vertical axis represents
 the change in \(y\). We mark equilibrium points on the phase plane and
 draw eigenvectors from these points to represent the trajectory of the
 system near equilibrium points. The direction of trajectories along
-eigenvectors is determined by the sign of the corresponding eigenvalues.
+eigenvectors is determined by the sign of the corresponding
+eigenvalues.
 
 We can also draw \textbf{nullclines} on the phase plane, which are
 curves where one of \(f\) or \(g\) is equal to zero.

@@ -1,0 +1,45 @@
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
+\documentclass{standalone}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont{TeX Gyre Pagella Math}[range={bb,bbit}, Scale=MatchUppercase]
+
+\usepackage[x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis x line=center,
+        axis y line=center,
+        xlabel={\(t\)},
+        ylabel={\(x\)},
+        xmin=0,
+        xmax=5,
+        ymin=-2,
+        ymax=2,
+        xtick=\empty,
+        ytick={-1,0,1},
+        width=1\textwidth,
+        height=0.8\textwidth
+    ]
+        \draw[dashed, opacity=0.5, line width=1pt] (axis cs:0.8863957827958416, 0) -- (axis cs:0.8863957827958416, -2) node [opacity=1, anchor=south west] {\(t_c\)};
+        % \draw[dashed, opacity=0.5] (axis cs:0, -1) -- (axis cs:5, -1);
+        % \draw[dashed, opacity=0.5] (axis cs:0, 0) -- (axis cs:5, 0);
+        % \draw[dashed, opacity=0.5] (axis cs:0, 1) -- (axis cs:5, 1);
+        \addplot[color=Green2,line width=1pt] table [x=t, y=x1, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Green2,line width=1pt, dashed] table [x=t, y=x2, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Firebrick2,line width=1pt] table [x=t, y=x3, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Firebrick2,line width=1pt] table [x=t, y=x4, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Firebrick2,line width=1pt, dashed] table [x=t, y=x5, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Firebrick2,line width=1pt] table [x=t, y=x6, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=Firebrick2,line width=1pt] table [x=t, y=x7, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=DeepSkyBlue2,line width=1pt, dashed] table [x=t, y=x8, col sep=comma] {tikz/solution_curve_analysis.csv};
+        \addplot[color=DeepSkyBlue2,line width=1pt] table [x=t, y=x9, col sep=comma] {tikz/solution_curve_analysis.csv};
+    \end{axis}
+\end{tikzpicture}
+\end{document}

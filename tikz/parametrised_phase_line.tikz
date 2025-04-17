@@ -1,0 +1,52 @@
+%!TEX TS-program = xelatex
+%!TEX options = -aux-directory=Debug -shell-escape -file-line-error -interaction=nonstopmode -halt-on-error -synctex=1 "%DOC%"
+\documentclass{standalone}
+
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+\setmathfont{TeX Gyre Pagella Math}[range={bb,bbit}, Scale=MatchUppercase]
+
+\usepackage[x11names]{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{circuitikz}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis x line=center,
+        axis y line=center,
+        xlabel={\(x\)},
+        ylabel={\(\dot{x}\)},
+        xtick={-0.5, 0, 0.5, 1, 1.5},
+        xmin=-0.5,
+        xmax=1.5,
+        ymin=-0.5,
+        ymax=0.5,
+        ytick=\empty,
+        width=1\textwidth,
+        height=0.8\textwidth
+    ]
+        \addplot[color=Firebrick2,line width=1pt] table [x=x, y=g1, col sep=comma] {tikz/parametrised_phase_line.csv};
+        \addplot[color=DodgerBlue2,line width=1pt] table [x=x, y=g2, col sep=comma] {tikz/parametrised_phase_line.csv};
+        \addplot[color=Sienna1,line width=1pt] table [x=x, y=g3, col sep=comma] {tikz/parametrised_phase_line.csv};
+        \addplot[color=Green1,line width=1pt] table [x=x, y=g4, col sep=comma] {tikz/parametrised_phase_line.csv};
+        \addplot[color=DeepPink1,line width=1pt] table [x=x, y=g5, col sep=comma] {tikz/parametrised_phase_line.csv};
+
+        \legend{\(\lambda < -\frac{1}{4}\),
+                \(\lambda = -\frac{1}{4}\),
+                \(-\frac{1}{4} < \lambda < 0\),
+                \(\lambda = 0\),
+                \(\lambda > 0\)}
+        \fill (axis cs:0, 0) circle[radius=2pt] node[anchor=south,yshift=0.5cm] {\(x_{e1} = 0\)};
+        \fill[color=Green4] (axis cs:-0.207107, 0) circle[radius=2pt];
+        \fill[color=Green4] (axis cs:0.146447, 0) circle[radius=2pt];
+        \node[color=Green4, anchor=north,yshift=-0.5cm] at (axis cs:0,0) {\(x_{e2} = \frac{1 - \sqrt{1 + 4 \lambda}}{2}\)};
+        \fill[color=Coral2] (axis cs:0.5, 0) circle[radius=2pt];
+        \fill[color=Coral2] (axis cs:0.853553, 0) circle[radius=2pt];
+        \fill[color=Coral2] (axis cs:1, 0) circle[radius=2pt];
+        \fill[color=Coral2] (axis cs:1.20711, 0) circle[radius=2pt];
+        \node [color=Coral2, anchor=north,yshift=-0.5cm] at (axis cs:0.75,0) {\(x_{e3} = \frac{1 + \sqrt{1 + 4 \lambda}}{2}\)};
+    \end{axis}
+\end{tikzpicture}
+\end{document}
