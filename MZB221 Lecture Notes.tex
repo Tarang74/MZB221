@@ -589,16 +589,35 @@ appear inside that integral. When modifying the order of integration,
 we must ensure the same region is enclosed by the new bounds.
 \subsection{Transformation of Coordinates}
 In single variable calculus, we used a change of variables to simplify
-integration by considering a transformation \(u = S\left( x \right)\),
-to rewrite an integral in terms of \(u\), with the differential:
+integration by considering a continuously differentiable transformation
+\(u = S\left( x \right)\), to rewrite an integral in terms of \(u\). We
+did this by considering the derivative of \(u\) with respect to \(x\):
+\begin{align*}
+    \odv{u}{x}          & = \odv{S\left( x \right)}{x}           \\
+    \odv{u}{x} \odif{x} & = \odv{S\left( x \right)}{x} \odif{x}  \\
+    \odif{u}            & = \odv{S\left( x \right)}{x} \odif{x}.
+\end{align*}
+This gave us the differential \(\odif{x}\):
 \begin{equation*}
-    \odif{x} = \frac{1}{\odv{S\left( x \right)}{x}} \odif{u} = \odv{S^{-1}\left( u \right)}{u} \odif{u}
+    \odif{x} = \frac{1}{\odv{S\left( x \right)}{x}} \odif{u}.
 \end{equation*}
-where \(x = S^{-1}\left( u \right)\) is the inverse transformation. This
-concept can be extended to integrals with multiple variables by
-considering the inverse transformation
-\(x = T\left( u \right) = S^{-1}\left( u \right)\), where we can use
-the chain rule to find the differential:
+Here we can use the inverse function theorem to show that:
+\begin{align*}
+    \frac{1}{\odv{S\left( x \right)}{x}} = \odv{x}{S\left( x \right)} = \odv{x}{S\left( S^{-1}\left( u \right) \right)} = \odv{S^{-1}\left( u \right)}{u},
+\end{align*}
+where \(x = S^{-1}\left( u \right)\) is the inverse transformation.
+Therefore,
+\begin{equation*}
+    \odif{x} = \odv{S^{-1}\left( u \right)}{u} \odif{u}.
+\end{equation*}
+This transformed an integral in \(x\) to an integral in \(u\):
+\begin{equation*}
+    \int_a^b f\left( x \right) \odif{x} = \int_{u\left( a \right)}^{u\left( b \right)} f\left( S^{-1}\left( u \right) \right) \odv{S^{-1}\left( u \right)}{u} \odif{u}.
+\end{equation*}
+This concept can be extended to integrals with multiple variables by
+instead considering the \textit{inverse} transformation
+\(T\left( u \right) = x = S^{-1}\left( u \right)\), where we can use
+the chain rule to find the same differential we found above:
 \begin{equation*}
     \odif{x} = \odv{T\left( u \right)}{u} \odif{u}.
 \end{equation*}
@@ -607,7 +626,7 @@ a matrix of all the partial derivatives of a transformation. For the
 transformation \(\symbf{x} = \symbf{T}\left( \symbf{u} \right)\),
 consider the Jacobian matrix of partial derivatives:
 \begin{equation*}
-    \symbf{J} =
+    \symbf{J} = \pdv{\symbf{T}}{\symbf{u}} =
     \begin{bmatrix}
         \displaystyle\pdv{x_1}{u_1} & \cdots & \displaystyle\pdv{x_1}{u_n} \\
         \vdots                      & \ddots & \vdots                      \\
@@ -616,17 +635,76 @@ consider the Jacobian matrix of partial derivatives:
     .
 \end{equation*}
 The determinant of this matrix is known as the Jacobian of a transformation,
-and it gives us the factor by which the volume of the region is scaled
-under the transformation, giving us the new differential:
+and it gives us the factor by which the measure (area/volume) of the region is scaled
+under the transformation, giving us a generalised differential:
 \begin{equation*}
-    \odif{\symbf{x}} = \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
+    \odif{\symbf{x}} = \abs*{\det{\left( \pdv{\symbf{T}}{\symbf{u}} \right)}} \odif{\symbf{u}} = \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
 \end{equation*}
 Therefore, given a bijective transformation \(T : \Omega \subset \R^n \to \Omega'\subset \R^n\),
 where \(T\) has continuous partial derivatives, an integral in
 \(\symbf{x}\) can be transformed to an integral in \(\symbf{u}\) by:
 \begin{equation*}
-    \int_\Omega f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{\Omega'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
+    \int_\Omega f\left( \symbf{x} \right) \odif{\symbf{x}} = \int_{\Omega'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\left( \pdv{\symbf{T}}{\symbf{u}} \right)}} \odif{\symbf{u}} = \int_{\Omega'} f\left( \symbf{T}\left( \symbf{u} \right) \right) \abs*{\det{\symbf{J}}} \odif{\symbf{u}}.
 \end{equation*}
+\subsubsection{Cartesian Coordinates (3D)}
+The Cartesian coordinate system is the identity transformation
+\begin{align*}
+    x_1 & = x \\
+    x_2 & = y \\
+    x_3 & = z
+\end{align*}
+for \(3\) mutually orthogonal components \(-\infty < x < \infty\),
+\(-\infty < y < \infty\), \(-\infty < z < \infty\). Here, the inverse
+transformation function is also given by the identity function:
+\begin{equation*}
+    \begin{bmatrix}
+        x_1 \\
+        x_2 \\
+        x_3 \\
+    \end{bmatrix}
+    = \symbf{T}\left(
+    \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix}
+    \right) =
+    \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}
+\end{equation*}
+and has a Jacobian matrix equal to the \(3 \times 3\) identity matrix:
+\begin{equation*}
+    \symbf{J} = \symbf{I}_3
+\end{equation*}
+with the determinant:
+\begin{equation*}
+    \abs*{\det{\symbf{J}}} = 1.
+\end{equation*}
+The basis vectors in this coordinate system are given by the
+standard/canonical basis vectors:
+\begin{align*}
+    \symbf{e}_x & = \symbf{e}_1 = \hat{\symbf{i}} \\
+    \symbf{e}_y & = \symbf{e}_2 = \hat{\symbf{j}} \\
+    \symbf{e}_z & = \symbf{e}_3 = \hat{\symbf{k}}
+\end{align*}
+and the gradient vector is given by:
+\begin{equation*}
+    \symbf{\nabla} = \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y} + \symbf{e}_z \pdv{}{z}.
+\end{equation*}
+The divergence and curl of a vector field \(\symbf{F}\) with components
+\(F_x\), \(F_y\), and \(F_z\) are given by
+\begin{align*}
+    \divergence \symbf{F} = \symbf{\nabla} \cdot \symbf{F}  & = \left( \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y} + \symbf{e}_z \pdv{}{z} \right) \cdot \left( F_x \symbf{e}_x + F_y \symbf{e}_y + F_z \symbf{e}_z \right) = \pdv{F_x}{x} + \pdv{F_y}{y} + \pdv{F_z}{z} \\
+    \curl \symbf{F}       = \symbf{\nabla} \times \symbf{F} & = \left( \symbf{e}_x \pdv{}{x} + \symbf{e}_y \pdv{}{y} + \symbf{e}_z \pdv{}{z} \right) \times \left( F_x \symbf{e}_x + F_y \symbf{e}_y + F_z \symbf{e}_z \right) =
+    \begin{vmatrix}
+        \symbf{e}_x            & \symbf{e}_y            & \symbf{e}_z            \\
+        \displaystyle\pdv{}{x} & \displaystyle\pdv{}{y} & \displaystyle\pdv{}{z} \\
+        F_x                    & F_y                    & F_z                    \\
+    \end{vmatrix}
+\end{align*}
 \subsubsection{Polar Coordinates (2D)}
 To transform a Cartesian coordinate system to polar coordinates,
 consider the transformation:
@@ -634,8 +712,26 @@ consider the transformation:
     x & = r \cos{\theta} & r      & = \sqrt{x^2 + y^2}                    \\
     y & = r \sin{\theta} & \theta & = \arctan{\left( \frac{y}{x} \right)}
 \end{align*}
-for \(r \geqslant 0\) and \(0 \leqslant \theta \leqslant 2\pi\). This transformation has
-the Jacobian matrix:
+for a radius \(r \geqslant 0\) from the origin and an azimuthal angle
+\(0 \leqslant \theta \leqslant 2\pi\) around the origin. Here, the
+inverse transformation function is given by:
+\begin{equation*}
+    \begin{bmatrix}
+        x \\
+        y
+    \end{bmatrix}
+    = \symbf{T}\left(
+    \begin{bmatrix}
+            r \\
+            \theta
+        \end{bmatrix}
+    \right) =
+    \begin{bmatrix}
+        r \cos{\theta} \\
+        r \sin{\theta}
+    \end{bmatrix}
+\end{equation*}
+This transformation has the Jacobian matrix:
 \begin{equation*}
     \symbf{J} =
     \begin{bmatrix}
@@ -666,7 +762,7 @@ chain rule:
     \pdv{}{x} & = \pdv{r}{x} \pdv{}{r} + \pdv{\theta}{x} \pdv{}{\theta} \\
     \pdv{}{y} & = \pdv{r}{y} \pdv{}{r} + \pdv{\theta}{y} \pdv{}{\theta}
 \end{align*}
-The partial derivatives in these expressions are given by:
+where the partial derivatives in these expressions are given by:
 \begin{align*}
     \pdv{r}{x} & = \frac{x}{r} = \cos{\theta} & \pdv{\theta}{x} & = -\frac{y}{r^2} = -\frac{1}{r}\sin{\theta} \\
     \pdv{r}{y} & = \frac{y}{r} = \sin{\theta} & \pdv{\theta}{y} & = \frac{x}{r^2} = \frac{1}{r}\cos{\theta}
@@ -683,6 +779,15 @@ giving the transformed basis vectors:
     \symbf{e}_r      & = \cos{\theta} \symbf{e}_x + \sin{\theta} \symbf{e}_y \\
     \symbf{e}_\theta & = \cos{\theta} \symbf{e}_y - \sin{\theta} \symbf{e}_x
 \end{align*}
+The divergence and curl of a vector field \(\symbf{F}\) with components
+\(F_r\) and \(F_\theta\) are given by
+\begin{align*}
+    \divergence \symbf{F} = \symbf{\nabla} \cdot \symbf{F}  & = \left( \symbf{e}_r \pdv{}{r} + \symbf{e}_\theta \frac{1}{r} \pdv{}{\theta} \right) \cdot \left( r F_r \symbf{e}_r + F_\theta \symbf{e}_\theta \right) = \pdv{r F_r}{r} + \frac{1}{r} \pdv{F_\theta}{\theta} \\
+    \curl \symbf{F}       = \symbf{\nabla} \times \symbf{F} & = \left( \symbf{e}_r \pdv{}{r} + \symbf{e}_\theta \frac{1}{r} \pdv{}{\theta} \right) \times \left( r F_r \symbf{e}_r + F_\theta \symbf{e}_\theta \right) =
+    \begin{vmatrix}
+        \symbf{i}
+    \end{vmatrix}
+\end{align*}
 \subsubsection{Cylindrical Coordinates (3D)}
 To transform a Cartesian coordinate system to cylindrical coordinates,
 consider the transformation:
@@ -691,7 +796,29 @@ consider the transformation:
     y & = r \sin{\theta} & \theta & = \arctan{\left( \frac{y}{x} \right)} \\
     z & = z              & z      & = z
 \end{align*}
-for \(r \geqslant 0\), \(0 \leqslant \theta \leqslant 2\pi\), and \(-\infty < z < \infty\).
+for a radius \(r \geqslant 0\) perpendicular to the \(z\)-axis, an
+azimuthal angle \(0 \leqslant \theta \leqslant 2\pi\) around the
+\(z\)-axis, and a distance \(-\infty < z < \infty\) along the
+\(z\)-axis. Here, the inverse transformation function is given by:
+\begin{equation*}
+    \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}
+    = \symbf{T}\left(
+    \begin{bmatrix}
+            r      \\
+            \theta \\
+            z
+        \end{bmatrix}
+    \right) =
+    \begin{bmatrix}
+        r \cos{\theta} \\
+        r \sin{\theta} \\
+        z
+    \end{bmatrix}
+\end{equation*}
 This transformation has the Jacobian matrix:
 \begin{equation*}
     \symbf{J} =
@@ -753,7 +880,30 @@ consider the transformation:
     y & = r \sin{\theta} \sin{\phi} & \theta & = \arctan{\left( \frac{y}{x} \right)} \\
     z & = r \cos{\phi}              & \phi   & = \arccos{\left( \frac{z}{r} \right)}
 \end{align*}
-for \(r \geqslant 0\), \(0 \leqslant \theta \leqslant 2\pi\), and \(0 \leqslant \phi \leqslant \pi\).
+for a radius \(r \geqslant 0\) from the origin, an azimuthal angle
+\(0 \leqslant \theta \leqslant 2\pi\) around the \(z\)-axis, and a polar
+angle \(0 \leqslant \phi \leqslant \pi\) measured downwards from the
+positive \(z\)-axis. Here, the inverse transformation function is given
+by:
+\begin{equation*}
+    \begin{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}
+    = \symbf{T}\left(
+    \begin{bmatrix}
+            r      \\
+            \theta \\
+            \phi
+        \end{bmatrix}
+    \right) =
+    \begin{bmatrix}
+        r \cos{\theta} \sin{\phi} \\
+        r \sin{\theta} \sin{\phi} \\
+        r \cos{\phi}
+    \end{bmatrix}
+\end{equation*}
 This transformation has the Jacobian matrix:
 \begin{equation*}
     \symbf{J} =
@@ -992,11 +1142,13 @@ where \(a \leqslant s \leqslant b\) and \(c \leqslant t \leqslant d\):
     \mathscr{S} = \left\{ \symbf{r}\left( s,\: t \right) : a \leqslant s \leqslant b, \: c \leqslant t \leqslant d \right\}.
 \end{equation*}
 When the partial derivatives of \(\symbf{r}\) are linearly independent,
-we can define the normal vector to the surface:
+we can define the following normal vector to the surface:
 \begin{equation*}
-    \symbf{n} = \symbf{r}_s \times \symbf{r}_t.
+    \hat{\symbf{n}} = \frac{\symbf{r}_s \times \symbf{r}_t}{\norm*{\symbf{r}_s \times \symbf{r}_t}},
 \end{equation*}
-Integrals over surfaces are called surface integrals.
+where \(\symbf{r}_s\) and \(\symbf{r}_t\) are the two partial
+derivatives of \(\symbf{r}\). Integrals over such surfaces are called
+surface integrals.
 \subsection{Surface Integrals of Scalar Fields}
 Surface integrals of scalar fields have the form:
 \begin{equation*}
@@ -1021,6 +1173,47 @@ surface integral of a uniform field:
 \begin{equation*}
     A = \iint_{\mathscr{S}} \odif{\sigma} = \int_c^d \int_a^b \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
 \end{equation*}
+\subsubsection{Explicit Surfaces}
+When the surface \(\mathscr{S}\) can be expressed explicitly by the
+function
+\begin{equation*}
+    z = g\left( x,\: y \right),
+\end{equation*}
+we can use the parametrisation:
+\begin{equation*}
+    \symbf{r}\left( x,\: y \right) =
+    \begin{bmatrix}
+        x \\
+        y \\
+        g\left( x,\: y \right)
+    \end{bmatrix}
+\end{equation*}
+where we choose \(s = x\) and \(t = y\). This simplifies the surface
+integral over \(f\) to:
+\begin{align*}
+    \iint_{\mathscr{S}} f \odif{\sigma} & = \iint_{\mathscr{S}} f\left( \symbf{r}\left( x,\: y \right) \right) \norm*{\symbf{r}_x \times \symbf{r}_y} \odif{x} \odif{y} \\
+                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
+        \begin{bmatrix}
+            1 \\
+            0 \\
+            g_x
+        \end{bmatrix}
+        \times
+        \begin{bmatrix}
+            0 \\
+            1 \\
+            g_y
+        \end{bmatrix}
+    } \odif{x} \odif{y}                                                                                                                                                 \\
+                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
+        \begin{bmatrix}
+            -g_x \\
+            -g_y \\
+            1
+        \end{bmatrix}
+    } \odif{x} \odif{y}                                                                                                                                                 \\
+                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \sqrt{g_x^2 + g_y^2 + 1} \odif{x} \odif{y}.
+\end{align*}
 \subsection{Surface Integrals of Vector Fields}
 Surface integrals of vector fields have the form:
 \begin{equation*}
@@ -1032,7 +1225,7 @@ The differential element \(\odif{\symbf{\sigma}}\) is given by
 \begin{equation*}
     \odif{\symbf{\sigma}} = \hat{\symbf{n}} \odif{\sigma} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}
 \end{equation*}
-where \(\symbf{r}_s \times \symbf{r}_t\) represents the normal vector to
+where \(\symbf{r}_s \times \symbf{r}_t\) represents a normal vector to
 the surface \(\mathscr{S}\).
 Therefore, the surface integral of \(\symbf{F}\) over the surface
 \(\mathscr{S}\) is given by:
@@ -1042,6 +1235,47 @@ Therefore, the surface integral of \(\symbf{F}\) over the surface
 Note that this integral represents the outward or inward flow of
 \(\symbf{F}\) through \(\mathscr{S}\), where the direction of flow
 depends on the sign of \(\symbf{n}\).
+\subsubsection{Explicit Surfaces}
+When the surface \(\mathscr{S}\) can be expressed explicitly by the
+function
+\begin{equation*}
+    z = g\left( x,\: y \right),
+\end{equation*}
+we can use the parametrisation:
+\begin{equation*}
+    \symbf{r}\left( x,\: y \right) =
+    \begin{bmatrix}
+        x \\
+        y \\
+        g\left( x,\: y \right)
+    \end{bmatrix}
+\end{equation*}
+where we choose \(s = x\) and \(t = y\). This simplifies the surface
+integral of \(\symbf{F}\) over \(\mathscr{S}\) to:
+\begin{align*}
+    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} & = \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( x,\: y \right) \right) \cdot \left( \symbf{r}_x \times \symbf{r}_y \right) \odif{x} \odif{y} \\
+                                                                                                                                                        & = \iint_{\mathscr{S}} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot \left(
+    \begin{bmatrix}
+            1 \\
+            0 \\
+            g_x
+        \end{bmatrix}
+    \times
+    \begin{bmatrix}
+            0 \\
+            1 \\
+            g_y
+        \end{bmatrix}
+    \right) \odif{x} \odif{y}                                                                                                                                                                                                                                                                                \\
+                                                                                                                                                        & = \iint_{\mathscr{S}} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot
+    \begin{bmatrix}
+        -g_x \\
+        -g_y \\
+        1
+    \end{bmatrix}
+    \odif{x} \odif{y}                                                                                                                                                                                                                                                                                        \\
+                                                                                                                                                        & = \iint_{\mathscr{S}} \left( - F_1 g_x - F_2 g_y + F_3 \right) \odif{x} \odif{y}.
+\end{align*}
 \section{Fundamental Theorems of Calculus}
 The three vector calculus operators have corresponding theorems which
 generalise the Fundamental Theorem of Calculus to higher dimensions.
@@ -1165,6 +1399,41 @@ where \(c\) is a real number such that the region of integration is to
 the right of all singularities of \(F\left( s \right)\). However, for
 many simple functions, the inverse Laplace transform can be determined
 using partial fraction decomposition and Laplace transform tables.
+This is shown below.
+\subsubsection{Partial Fraction Decomposition}
+Given the rational function
+\begin{equation*}
+    \frac{P\left( s \right)}{Q\left( s \right)}
+\end{equation*}
+where \(P\left( s \right)\) and \(Q\left( s \right)\) are polynomials
+and the degree of \(P\left( s \right)\) is less than the degree of
+\(Q\left( s \right)\), we can decompose it into a sum of
+partial fractions by factoring \(Q\left( s \right)\) into real linear
+and irreducible quadratic terms.
+\begin{enumerate}
+    \item For every real linear factor \(\left( s - q \right)^m\) of
+          \(Q\left( s \right)\), we must include terms of the form:
+          \begin{equation*}
+              \frac{A_1}{s - q} + \frac{A_2}{\left( s - q \right)^2} + \cdots + \frac{A_m}{\left( s - q \right)^m} =
+              \sum_{i=1}^m \frac{A_i}{\left( s - q \right)^i}
+          \end{equation*}
+          where \(A_i\) are constants.
+    \item For every irreducible quadratic factor \(\left( a s^2 + bs +
+          c \right)^m\) of \(Q\left( s \right)\), we must include
+          terms of the form:
+          \begin{equation*}
+              \frac{B_1 s + C_1}{a s^2 + b s + c} + \frac{B_2 s + C_2}{\left( a s^2 + b s + c \right)^2} + \cdots + \frac{B_m s + C_m}{\left( a s^2 + b s + c \right)^m} =
+              \sum_{i=1}^m \frac{B_i s + C_i}{\left( a s^2 + b s + c \right)^i}
+          \end{equation*}
+          where \(B_i\) and \(C_i\) are constants.
+\end{enumerate}
+The constants \(A_i\), \(B_i\) and \(C_i\) can be determined by first
+multiplying both sides of the equation by \(Q\left( s \right)\) to
+obtain a polynomial equation, and then substituting suitable values of
+\(s\) to eliminate terms. These values will typically be the roots of
+\(Q\left( s \right)\), and for repeated roots, we can use any other
+value of \(s\) that does not eliminate the term we are trying to
+determine.
 \subsection{Heaviside Step Function}
 The Heaviside step function is defined as:
 \begin{equation*}
