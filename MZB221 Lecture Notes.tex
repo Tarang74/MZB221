@@ -156,6 +156,15 @@ defined:
     f\left( x \right) = \sum_{n=0}^{\infty} \frac{f^{\left( n \right)}\left( x_0 \right)}{n!} {\left( x - x_0 \right)}^n
 \end{equation*}
 When \(x_0 = 0\), the Taylor series is called the \textbf{Maclaurin series}.
+Equivalently, the Maclaurin series expresses \(f\left( x \right)\) as a
+linear combination of the \(\infty\)-dimensional monomial basis:
+\begin{equation*}
+  \left\{ 1,\: x,\: x^2,\: x^3,\: \ldots \right\}.
+\end{equation*}
+The general Taylor series uses the shifted basis:
+\begin{equation*}
+  \left\{ 1,\: \left( x - x_0 \right),\: {\left( x - x_0 \right)}^2,\: \ldots \right\}.
+\end{equation*}
 \subsection{Convergence of Taylor Series}
 The Taylor series is a form of a \textbf{power series}:
 \begin{equation*}
@@ -198,7 +207,7 @@ if it satisfies the following condition:
     f\left( t + T \right) = f\left( t \right)
 \end{equation*}
 for all \(t\). As with Taylor polynomials, we wish to build an
-approximation of \(f\left( t \right)\) using some basis.
+approximation of \(f\left( t \right)\) using a set of basis functions.
 \subsection{The Fourier Series}
 The Fourier series is a representation of a periodic function as the
 linear combination of sine and cosine functions. For a periodic
@@ -228,10 +237,18 @@ Fourier series converges to the \textbf{periodic extension} of \(f\).
 The endpoints of the interval may converge non-uniformly, corresponding
 to jump discontinuities in the periodic extension of \(f\).
 \subsection{Orthogonality}
-Both the Taylor series and Fourier series are comprised of an
-\textbf{orthogonal basis}. In this function space, the inner product of
-two functions \(f\left( t \right)\) and \(g\left( t \right)\) is
-defined:
+The Fourier series is defined using an infinite-dimensional set of
+basis functions\footnote{Unlike the Fourier basis, the
+monomial basis $\left\{1,\: x,\: x^2,\: \ldots\right\}$ used in the
+Taylor series is not orthogonal, but can be orthogonalised via the
+Gram-Schmidt process, yielding families such as the Legendre or
+Chebyshev polynomials.}:
+\begin{equation*}
+    \left\{ 1, \: \cos{\left( \frac{2\pi n}{T} t \right)}, \: \sin{\left( \frac{2\pi n}{T} t \right)} \right\}
+\end{equation*}
+for all \(n \in \mathbb{N}\). In this particular function space, the
+inner product of two functions \(f\left( t \right)\) and
+\(g\left( t \right)\) is defined:
 \begin{equation*}
     \abracket*{f,\: g} = \int_{t_0}^{t_0 + T} f\left( t \right) g\left( t \right) \odif{t}
 \end{equation*}
@@ -239,14 +256,8 @@ on the interval \(\interval{t_0}{t_0 + T}\). The norm of a function can
 be defined as \(\norm{f} = \sqrt{\abracket*{f,\: f}}\). Using this
 definition, we say that two functions are \textbf{orthogonal} if their
 inner product is zero, and \textbf{orthonormal} if their inner product
-is one.
-The Fourier series is defined using an infinite-dimensional set of
-orthogonal basis functions:
-\begin{equation*}
-    \left\{ 1, \: \cos{\left( \frac{2\pi n}{T} t \right)}, \: \sin{\left( \frac{2\pi n}{T} t \right)} \right\}
-\end{equation*}
-for all \(n \in \mathbb{N}\). The inner products of these basis
-functions are given by:
+is one. The Fourier basis functions are \textbf{orthogonal} under this
+inner product. Their inner products are given by:
 \begin{align*}
     \abracket*{\cos{\left( \frac{2\pi n}{T} t \right)},\: 1}                                       & = \int_{t_0}^{t_0 + T} \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t} = 0                                         \\
     \abracket*{\sin{\left( \frac{2\pi n}{T} t \right)},\: 1}                                       & = \int_{t_0}^{t_0 + T} \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t} = 0                                         \\
