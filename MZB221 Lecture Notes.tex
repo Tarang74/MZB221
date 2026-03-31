@@ -346,33 +346,23 @@ the integral is zero. This results in a series containing only even
 functions, called the Fourier cosine series expansion of
 \(f\left( t \right)\):
 \begin{align*}
-    f_c\left( t \right) = a_0 + \sum_{n=1}^{\infty} a_n \cos{\left( \frac{2\pi n}{T} t \right)}
-\end{align*}
-with
-\begin{align*}
-    a_0 & = \frac{2}{T} \int_{0}^{T/2} f\left( t \right) \odif{t}                                         \\
-    a_n & = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+    f_c\left( t \right) = a_0 + \sum_{n=1}^{\infty} a_n \cos{\left( \frac{2\pi n}{T} t \right)}, \quad a_0 = \frac{2}{T} \int_{0}^{T/2} f\left( t \right) \odif{t}, \quad a_n = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
 \end{align*}
 \subsection{Fourier Sine Series}
 Suppose \(f\left( t \right)\) is an odd function with period \(T\), and
 let us compute the Fourier series of \(f\left( t \right)\) on the
 interval \(\interval{-T/2}{T/2}\). Consider the coefficients \(a_0\)
 and \(a_n\):
-\begin{align*}
-    a_0 & = \frac{1}{T} \int_{-T/2}^{T/2} f\left( t \right) \odif{t}                                         \\
-    a_n & = \frac{2}{T} \int_{-T/2}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
-\end{align*}
+\begin{equation*}
+    a_0 = \frac{1}{T} \int_{-T/2}^{T/2} f\left( t \right) \odif{t}, \quad a_n = \frac{2}{T} \int_{-T/2}^{T/2} f\left( t \right) \cos{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{equation*}
 as \(f\left( t \right)\) is odd, the resulting integrand is odd for
 both \(a_0\) and \(a_n\), and the integrals are zero. This results in a
 series containing only odd functions, called the Fourier sine series
 expansion of \(f\left( t \right)\):
-\begin{align*}
-    f_s\left( t \right) = \sum_{n=1}^{\infty} b_n \sin{\left( \frac{2\pi n}{T} t \right)}
-\end{align*}
-with
-\begin{align*}
-    b_n & = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t}
-\end{align*}
+\begin{equation*}
+    f_s\left( t \right) = \sum_{n=1}^{\infty} b_n \sin{\left( \frac{2\pi n}{T} t \right)}, \quad b_n = \frac{4}{T} \int_{0}^{T/2} f\left( t \right) \sin{\left( \frac{2\pi n}{T} t \right)} \odif{t}
+\end{equation*}
 \subsection{Half-Range Expansions}
 Suppose a function \(f\left( t \right)\) is defined on the interval
 \(\interval{0}{T}\), that is not necessarily even or odd. We can extend
@@ -405,6 +395,7 @@ function \(f\left( t \right) = t^2\) on the interval \(\interval{0}{T}\):
     \includegraphics[width = 0.8\linewidth]{figures/half_range_expansion_Sine.pdf}
     \caption{Fourier sine series expansion of \(f\left( t \right)\) onto the interval \(\interval{-T}{T}\), with the period \(2T\).} % \label{}
 \end{figure}
+\newpage
 \part{Vector Calculus}
 \section{Scalar Fields}
 A scalar field is any function \(f : \mathbb{R}^n \to \mathbb{R}\),
@@ -417,25 +408,31 @@ of the function with respect to each variable:
 \end{equation*}
 that is, the rate of change of the function in the \(x_i\) direction,
 holding all other variables constant.
-\subsection{Directional Derivatives}
-To find the rate of change of a scalar field \(f\left( x_1, \: \ldots,
-\: x_n \right)\) in the direction of a unit vector \(\mathbf{u} =
-\left[ u_1, \: \ldots, \: u_n \right]\), we can scale the standard
-basis vectors by the components of \(\mathbf{u}\):
-\begin{equation*}
-    D_{\mathbf{u}} f \equiv \pdv{f}{\symbf{u}} = \sum_{i=1}^{n} \pdv{f}{x_i} \frac{u_i}{\norm*{\symbf{u}}}.
-\end{equation*}
-This is known as the \textbf{directional derivative} of \(f\) in the direction of \(\mathbf{u}\).
 \subsection{Gradient}
-The gradient of a scalar field is an operator \(\grad : f \to
-\mathbb{R}^n\) which maps a scalar field \(f\) to a vector field:
+The gradient of a scalar field is an operator \(\grad : \left( \R^n \to \R \right) \to
+\mathbb{R}^n\) that maps a scalar field \(f\) to a vector field:
 \begin{equation*}
-    \grad{f} \equiv \symbf{\nabla} f = \left[ \pdv{}{x_1}, \: \ldots, \: \pdv{}{x_n} \right].
+    \grad{f} \equiv \symbf{\nabla} f = \left[ \pdv{f}{x_1}, \: \ldots, \: \pdv{f}{x_n} \right].
 \end{equation*}
-We can equivalently write the directional derivative as the dot product
-of the gradient of \(f\) with the unit vector \(\mathbf{u}\):
+This operator collects all partial derivatives of \(f\) into the vector
+\(\symbf{\nabla} f\).
+\subsection{Directional Derivatives}
+The gradient of a scalar field \(f\left( x_1, \: \ldots, \: x_n \right)\)
+in the direction of a specific basis vector can be found using the dot
+product:
 \begin{equation*}
-    D_{\mathbf{u}} f = \symbf{\nabla} f \cdot \hat{\mathbf{u}}.
+    \symbf{\nabla} f \cdot \symbf{e}_i = \pdv{f}{x_i}.
+\end{equation*}
+To find the gradient of \(f\) along an arbitrary vector \(\mathbf{u} =
+\left[ u_1, \: \ldots, \: u_n \right]\), we can scale the standard basis
+vectors by the components of \(\hat{\mathbf{u}}\):
+\begin{equation*}
+    \symbf{\nabla} f \cdot \hat{\symbf{u}}.
+\end{equation*}
+This is known as the \textbf{directional derivative} of \(f\) in the
+direction of \(\mathbf{u}\) and is defined as follows:
+\begin{equation*}
+    D_{\mathbf{u}} f \equiv \pdv{f}{\symbf{u}} = \symbf{\nabla} f \cdot \hat{\symbf{u}} = \sum_{i=1}^{n} \pdv{f}{x_i} \frac{u_i}{\norm*{\symbf{u}}}.
 \end{equation*}
 \subsection{Gradient of a Scalar Field}
 The gradient of a scalar field \(f\) is a vector field that points in
@@ -446,6 +443,13 @@ equal to the rate of change. That is:
     \item \(-\symbf{\nabla} f\) points in the direction of greatest decrease of \(f\).
     \item \(\norm*{\symbf{\nabla} f}\) is the rate of increase of \(f\) in that direction.
 \end{itemize}
+To prove the first result, we will try to maximise \(D_{\symbf{u}} f\):
+\begin{equation*}
+  D_{\symbf{u}} f = \symbf{\nabla} f \cdot \hat{\symbf{u}} = \norm{\symbf{\nabla} f} \norm{\hat{\symbf{u}}} \cos{\theta} = \norm{\symbf{\nabla} f} \cos{\theta}.
+\end{equation*}
+This result is maximised when \(\theta = 0\), or when
+\(\symbf{u} = \symbf{\nabla} f\). For the second result, \(\theta = \pi\),
+so that \(\symbf{u} = -\symbf{\nabla} f\).
 \section{Vector Fields}
 A vector field is any function \(\symbf{F} : \mathbb{R}^n \to
 \mathbb{R}^n\), that assigns a vector to every vector in
@@ -458,7 +462,7 @@ derivatives of each component of the vector field:
 \end{equation*}
 \subsection{Divergence}
 The divergence of a vector field is an operator \(\divergence :
-\symbf{F} \to \mathbb{R}\), which maps a vector field \(\symbf{F}\) to
+\left( \R^n \to \R^n \right) \to \mathbb{R}\), which maps a vector field \(\symbf{F}\) to
 a scalar:
 \begin{equation*}
     \divergence \symbf{F} = \symbf{\nabla} \cdot \symbf{F} = \sum_{i=1}^{n} \pdv{F_i}{x_i}.
@@ -474,8 +478,8 @@ field flows out of a point \(P\).
           vector field at \(P\) is zero (conservative).
 \end{itemize}
 \subsection{Curl}
-The curl of a vector field is an operator \(\curl : \symbf{F} \to
-\symbf{G}\), which maps a vector field \(\symbf{F} : \mathbb{R}^3 \to
+The curl of a vector field is an operator \(\curl : \left( \R^n \to \R^n \right) \to
+\left( \R^n \to \R^n \right)\), which maps a vector field \(\symbf{F} : \mathbb{R}^3 \to
 \mathbb{R}^3\) to another vector field \(\symbf{G} : \mathbb{R}^3 \to
 \mathbb{R}^3\):
 \begin{equation*}
@@ -1346,6 +1350,7 @@ This theorem states that the area integral of the curl of a vector field
 \(\symbf{F}\) is equal to the line integral of \(\symbf{F}\) along the
 boundary \(\partial R\). Green's theorem is a special case of both the
 divergence and curl theorems in 2 dimensions.
+\newpage
 \part{Ordinary Differential Equations}
 \section{Laplace Transform}
 Consider a forced linear constant-coefficient differential equation of
