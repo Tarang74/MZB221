@@ -159,11 +159,11 @@ When \(x_0 = 0\), the Taylor series is called the \textbf{Maclaurin series}.
 Equivalently, the Maclaurin series expresses \(f\left( x \right)\) as a
 linear combination of the \(\infty\)-dimensional monomial basis:
 \begin{equation*}
-  \left\{ 1,\: x,\: x^2,\: x^3,\: \ldots \right\}.
+    \left\{ 1,\: x,\: x^2,\: x^3,\: \ldots \right\}.
 \end{equation*}
 The general Taylor series uses the shifted basis:
 \begin{equation*}
-  \left\{ 1,\: \left( x - x_0 \right),\: {\left( x - x_0 \right)}^2,\: \ldots \right\}.
+    \left\{ 1,\: \left( x - x_0 \right),\: {\left( x - x_0 \right)}^2,\: \ldots \right\}.
 \end{equation*}
 \subsection{Convergence of Taylor Series}
 The Taylor series is a form of a \textbf{power series}:
@@ -238,11 +238,10 @@ The endpoints of the interval may converge non-uniformly, corresponding
 to jump discontinuities in the periodic extension of \(f\).
 \subsection{Orthogonality}
 The Fourier series is defined using an infinite-dimensional set of
-basis functions\footnote{Unlike the Fourier basis, the
-monomial basis $\left\{1,\: x,\: x^2,\: \ldots\right\}$ used in the
-Taylor series is not orthogonal, but can be orthogonalised via the
-Gram-Schmidt process, yielding families such as the Legendre or
-Chebyshev polynomials.}:
+basis functions\footnote{Unlike the Fourier basis, the monomial basis
+$\left\{1,\: x,\: x^2,\: \ldots\right\}$ used in the Taylor series is
+not orthogonal, but can be orthogonalised via the Gram-Schmidt process,
+yielding families such as the Legendre or Chebyshev polynomials.}:
 \begin{equation*}
     \left\{ 1, \: \cos{\left( \frac{2\pi n}{T} t \right)}, \: \sin{\left( \frac{2\pi n}{T} t \right)} \right\}
 \end{equation*}
@@ -409,17 +408,18 @@ of the function with respect to each variable:
 that is, the rate of change of the function in the \(x_i\) direction,
 holding all other variables constant.
 \subsection{Gradient}
-The gradient of a scalar field is an operator \(\grad : \left( \R^n \to \R \right) \to
-\mathbb{R}^n\) that maps a scalar field \(f\) to a vector field:
+The gradient of a scalar field is an operator \(\grad : \left( \R^n \to
+\R \right) \to \mathbb{R}^n\) that maps a scalar field \(f\) to a
+vector field:
 \begin{equation*}
     \grad{f} \equiv \symbf{\nabla} f = \left[ \pdv{f}{x_1}, \: \ldots, \: \pdv{f}{x_n} \right].
 \end{equation*}
 This operator collects all partial derivatives of \(f\) into the vector
 \(\symbf{\nabla} f\).
 \subsection{Directional Derivatives}
-The gradient of a scalar field \(f\left( x_1, \: \ldots, \: x_n \right)\)
-in the direction of a specific basis vector can be found using the dot
-product:
+The gradient of a scalar field \(f\left( x_1, \: \ldots, \: x_n
+\right)\) in the direction of a specific basis vector can be found
+using the dot product:
 \begin{equation*}
     \symbf{\nabla} f \cdot \symbf{e}_i = \pdv{f}{x_i}.
 \end{equation*}
@@ -445,7 +445,7 @@ equal to the rate of change. That is:
 \end{itemize}
 To prove the first result, we will try to maximise \(D_{\symbf{u}} f\):
 \begin{equation*}
-  D_{\symbf{u}} f = \symbf{\nabla} f \cdot \hat{\symbf{u}} = \norm{\symbf{\nabla} f} \norm{\hat{\symbf{u}}} \cos{\theta} = \norm{\symbf{\nabla} f} \cos{\theta}.
+    D_{\symbf{u}} f = \symbf{\nabla} f \cdot \hat{\symbf{u}} = \norm{\symbf{\nabla} f} \norm{\hat{\symbf{u}}} \cos{\theta} = \norm{\symbf{\nabla} f} \cos{\theta}.
 \end{equation*}
 This result is maximised when \(\theta = 0\), or when
 \(\symbf{u} = \symbf{\nabla} f\). For the second result, \(\theta = \pi\),
@@ -461,9 +461,9 @@ derivatives of each component of the vector field:
     \pdv{\symbf{F}}{x_i} = \symbf{F}_{x_i} = \left[ \pdv{F_1}{x_i}, \: \ldots, \: \pdv{F_n}{x_i} \right]
 \end{equation*}
 \subsection{Divergence}
-The divergence of a vector field is an operator \(\divergence :
-\left( \R^n \to \R^n \right) \to \mathbb{R}\), which maps a vector field \(\symbf{F}\) to
-a scalar:
+The divergence of a vector field is an operator \(\divergence : \left(
+\R^n \to \R^n \right) \to \mathbb{R}\), which maps a vector field
+\(\symbf{F}\) to a scalar:
 \begin{equation*}
     \divergence \symbf{F} = \symbf{\nabla} \cdot \symbf{F} = \sum_{i=1}^{n} \pdv{F_i}{x_i}.
 \end{equation*}
@@ -478,10 +478,10 @@ field flows out of a point \(P\).
           vector field at \(P\) is zero (conservative).
 \end{itemize}
 \subsection{Curl}
-The curl of a vector field is an operator \(\curl : \left( \R^n \to \R^n \right) \to
-\left( \R^n \to \R^n \right)\), which maps a vector field \(\symbf{F} : \mathbb{R}^3 \to
-\mathbb{R}^3\) to another vector field \(\symbf{G} : \mathbb{R}^3 \to
-\mathbb{R}^3\):
+The curl of a vector field is an operator \(\curl : \left( \R^n \to
+\R^n \right) \to \left( \R^n \to \R^n \right)\), which maps a vector
+field \(\symbf{F} : \mathbb{R}^3 \to \mathbb{R}^3\) to another vector
+field \(\symbf{G} : \mathbb{R}^3 \to \mathbb{R}^3\):
 \begin{equation*}
     \curl \symbf{F} = \symbf{\nabla} \times \symbf{F} =
     \begin{vmatrix}
@@ -533,8 +533,8 @@ To compute this integral, we must bound the region by two functions
           the function \(f\left( x, \: y \right)\).
     \item In the \(x\)-direction, the region is bounded by the curves:
           \begin{alignat*}{2}
-              c                 & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} d                 \\
-              g\left( y \right) & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} h\left( y \right)
+              g\left( y \right) & \hspace{0.5em} \leqslant \hspace{0.5em} x &  & \hspace{0.5em} \leqslant \hspace{0.5em} h\left( y \right) \\
+              c                 & \hspace{0.5em} \leqslant \hspace{0.5em} y &  & \hspace{0.5em} \leqslant \hspace{0.5em} d
           \end{alignat*}
           for some functions \(g\left( y \right)\) and \(h\left( y \right)\)
           so that
@@ -679,10 +679,10 @@ transformation function is also given by the identity function:
     \end{bmatrix}
     = \symbf{T}\left(
     \begin{bmatrix}
-            x \\
-            y \\
-            z
-        \end{bmatrix}
+        x \\
+        y \\
+        z
+    \end{bmatrix}
     \right) =
     \begin{bmatrix}
         x \\
@@ -737,9 +737,9 @@ inverse transformation function is given by:
     \end{bmatrix}
     = \symbf{T}\left(
     \begin{bmatrix}
-            r \\
-            \theta
-        \end{bmatrix}
+        r \\
+        \theta
+    \end{bmatrix}
     \right) =
     \begin{bmatrix}
         r \cos{\theta} \\
@@ -823,10 +823,10 @@ azimuthal angle \(0 \leqslant \theta \leqslant 2\pi\) around the
     \end{bmatrix}
     = \symbf{T}\left(
     \begin{bmatrix}
-            r      \\
-            \theta \\
-            z
-        \end{bmatrix}
+        r      \\
+        \theta \\
+        z
+    \end{bmatrix}
     \right) =
     \begin{bmatrix}
         r \cos{\theta} \\
@@ -908,10 +908,10 @@ by:
     \end{bmatrix}
     = \symbf{T}\left(
     \begin{bmatrix}
-            r      \\
-            \theta \\
-            \phi
-        \end{bmatrix}
+        r      \\
+        \theta \\
+        \phi
+    \end{bmatrix}
     \right) =
     \begin{bmatrix}
         r \cos{\theta} \sin{\phi} \\
@@ -1072,9 +1072,9 @@ relationship with the canonical Euclidean differential elements:
     \odif{r}^2 = \sum_{i = 1}^n \odif{x}_i^2 \implies \odif{r} = \sqrt{\sum_{i = 1}^n \odif{x}_i^2} = \sqrt{\sum_{i = 1}^n \left( \odv{x_i}{t} \right)^2} \odif{t} = \norm*{\symbf{r}'\left( t \right)} \odif{t}.
 \end{equation*}
 Using the chain rule, we can also represent the differential element
-\(\odif{r}\) using the form:
+\(\odif{r}\) as:
 \begin{equation*}
-    \odif{r} = \odv{r}{t} \odif{t}
+    \odif{r} = \odv{r}{t} \odif{t},
 \end{equation*}
 so that
 \begin{equation*}
@@ -1104,16 +1104,27 @@ Line integrals of vector fields have the form:
 \end{equation*}
 These integrals represent the work done by the vector field \(\symbf{F}\)
 along a curve parametrised by the path \(\symbf{r}\left( t \right)\).
-The differential element \(\odif{\symbf{r}}\) can be computed using the
-chain rule:
+Here we recall the unit tangent vector at each point is
+\begin{equation*}
+    \symbf{\hat{\tau}}\left( t \right) = \frac{\symbf{r}'\left( t \right)}{\norm*{\symbf{r}'\left( t \right)}},
+\end{equation*}
+so the tangential component of \(\symbf{F}\) is \(\symbf{F} \cdot \symbf{\hat{\tau}}\).
+This shows the vector line integral is precisely a scalar line integral of
+that tangential component:
+\begin{align*}
+    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}}
+     & = \int_{\mathscr{C}} \left( \symbf{F} \cdot \symbf{\hat{\tau}} \right) \odif{r}                                                                                                                     \\
+     & = \int_a^b \left( \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \frac{\symbf{r}'\left( t \right)}{\norm*{\symbf{r}'\left( t \right)}} \right) \norm*{\symbf{r}'\left( t \right)} \odif{t} \\
+     & = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}
+\end{align*}
+Here the differential element \(\odif{\symbf{r}}\) takes the form:
 \begin{equation*}
     \odif{\symbf{r}} = \odv{\symbf{r}}{t} \odif{t} = \symbf{r}'\left( t \right) \odif{t}
 \end{equation*}
-where \(\symbf{r}'\left( t \right)\) is the velocity of the path.
-Therefore, the line integral of \(\symbf{F}\) along the curve
-\(\mathscr{C}\) is given by:
+where \(\symbf{r}'\left( t \right)\) is the velocity of the path. It can
+be related to the scalar differential element \(\odif{r}\) as follows:
 \begin{equation*}
-    \int_{\mathscr{C}} \symbf{F} \cdot \odif{\symbf{r}} = \int_a^b \symbf{F}\left( \symbf{r}\left( t \right) \right) \cdot \symbf{r}'\left( t \right) \odif{t}.
+    \odif{\symbf{r}} = \symbf{r}'\left( t \right) \odif{t} = \frac{\symbf{r}'\left( t \right)}{\norm*{\symbf{r}'\left( t \right)}} \norm*{\symbf{r}'\left( t \right)} \odif{t} = \symbf{\hat{\tau}}\left( t \right) \odif{r}.
 \end{equation*}
 \subsubsection{Circulation}
 When the path \(\symbf{r}\left( t \right)\) is closed, line integrals
@@ -1175,18 +1186,21 @@ The differential element \(\odif{\sigma}\) is given by
 \begin{equation*}
     \odif{\sigma} = \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}
 \end{equation*}
-where \(\norm*{\symbf{r}_s \times \symbf{r}_t}\) represents the area of
-the parallelogram spanned by \(\symbf{r}_s\) and \(\symbf{r}_t\).
-Therefore, the surface integral of \(f\) over the surface \(\mathscr{S}\)
-is given by:
+where \(\norm*{\symbf{r}_s \times \symbf{r}_t}\) is the area of
+the parallelogram spanned by \(\symbf{r}_s\) and \(\symbf{r}_t\). This
+scalar quantity represents the scale factor between the area element
+\(\odif{\sigma}\) on the surface and the projected area element
+\(\odif{s} \odif{t}\) in the parameter space. Therefore, the surface
+integral of \(f\) over the surface \(\mathscr{S}\) is given by:
 \begin{equation*}
-    \iint_{\mathscr{S}} f \odif{\sigma} = \int_c^d \int_a^b f\left( \symbf{r}\left( s,\: t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+    \iint_{\mathscr{S}} f \odif{\sigma} = \iint_T f\left( \symbf{r}\left( s,\: t \right) \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t},
 \end{equation*}
+where \(T\) is the region in the projected \(s\)-\(t\) space.
 \subsubsection{Surface Area}
 The surface area of the surface \(\mathscr{S}\) is defined as the
 surface integral of a uniform field:
 \begin{equation*}
-    A = \iint_{\mathscr{S}} \odif{\sigma} = \int_c^d \int_a^b \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
+    A = \iint_{\mathscr{S}} \odif{\sigma} = \iint_T \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t}.
 \end{equation*}
 \subsubsection{Explicit Surfaces}
 When the surface \(\mathscr{S}\) can be expressed explicitly by the
@@ -1206,50 +1220,59 @@ we can use the parametrisation:
 where we choose \(s = x\) and \(t = y\). This simplifies the surface
 integral over \(f\) to:
 \begin{align*}
-    \iint_{\mathscr{S}} f \odif{\sigma} & = \iint_{\mathscr{S}} f\left( \symbf{r}\left( x,\: y \right) \right) \norm*{\symbf{r}_x \times \symbf{r}_y} \odif{x} \odif{y} \\
-                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
-        \begin{bmatrix}
-            1 \\
-            0 \\
-            g_x
-        \end{bmatrix}
-        \times
-        \begin{bmatrix}
-            0 \\
-            1 \\
-            g_y
-        \end{bmatrix}
-    } \odif{x} \odif{y}                                                                                                                                                 \\
-                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
-        \begin{bmatrix}
-            -g_x \\
-            -g_y \\
-            1
-        \end{bmatrix}
-    } \odif{x} \odif{y}                                                                                                                                                 \\
-                                        & = \iint_{\mathscr{S}} f\left( x,\: y,\: g\left( x,\: y \right) \right) \sqrt{g_x^2 + g_y^2 + 1} \odif{x} \odif{y}.
+    \iint_{\mathscr{S}} f \odif{\sigma} & = \iint_{T} f\left( \symbf{r}\left( x,\: y \right) \right) \norm*{\symbf{r}_x \times \symbf{r}_y} \odif{x} \odif{y} \\
+                                        & = \iint_{T} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
+                                                                                                           \begin{bmatrix}
+                                                                                                               1 \\
+                                                                                                               0 \\
+                                                                                                               g_x
+                                                                                                           \end{bmatrix}
+                                                                                                           \times
+                                                                                                           \begin{bmatrix}
+                                                                                                               0 \\
+                                                                                                               1 \\
+                                                                                                               g_y
+                                                                                                           \end{bmatrix}
+                                                                                                       } \odif{x} \odif{y}                                 \\
+                                        & = \iint_{T} f\left( x,\: y,\: g\left( x,\: y \right) \right) \norm*{
+                                                                                                           \begin{bmatrix}
+                                                                                                               -g_x \\
+                                                                                                               -g_y \\
+                                                                                                               1
+                                                                                                           \end{bmatrix}
+                                                                                                       } \odif{x} \odif{y}                                 \\
+                                        & = \iint_{T} f\left( x,\: y,\: g\left( x,\: y \right) \right) \sqrt{g_x^2 + g_y^2 + 1} \odif{x} \odif{y}.
 \end{align*}
 \subsection{Surface Integrals of Vector Fields}
-Surface integrals of vector fields have the form:
+Surface integrals of vector fields take the form:
 \begin{equation*}
     \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}}
 \end{equation*}
 These integrals represent the flux of the vector field \(\symbf{F}\)
 through the surface parametrised by \(\symbf{r}\left( s,\: t \right)\).
-The differential element \(\odif{\symbf{\sigma}}\) is given by
+Here we recall the unit normal vector at each point is
+\begin{equation*}
+    \hat{\symbf{n}}\left( s,\: t \right) = \frac{\symbf{r}_s \times \symbf{r}_t}{\norm*{\symbf{r}_s \times \symbf{r}_t}},
+\end{equation*}
+so the normal component of \(\symbf{F}\) is \(\symbf{F} \cdot \hat{\symbf{n}}\).
+This shows the vector surface integral is precisely a scalar surface
+integral of that normal component:
+\begin{align*}
+    \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}}
+     & = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma}                                                                                                                                            \\
+     & = \iint_T \left( \symbf{F}\left( \symbf{r}\left( s,\: t \right) \right) \cdot \frac{\symbf{r}_s \times \symbf{r}_t}{\norm*{\symbf{r}_s \times \symbf{r}_t} } \right) \norm*{\symbf{r}_s \times \symbf{r}_t} \odif{s} \odif{t} \\
+     & = \iint_T \symbf{F}\left( \symbf{r}\left( s,\: t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
+\end{align*}
+Here the differential element \(\odif{\symbf{\sigma}}\) is a product of
+the unit normal vector and the scalar differential element:
 \begin{equation*}
     \odif{\symbf{\sigma}} = \hat{\symbf{n}} \odif{\sigma} = \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}
 \end{equation*}
-where \(\symbf{r}_s \times \symbf{r}_t\) represents a normal vector to
-the surface \(\mathscr{S}\).
-Therefore, the surface integral of \(\symbf{F}\) over the surface
-\(\mathscr{S}\) is given by:
-\begin{equation*}
-    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} = \int_c^d \int_a^b \symbf{F}\left( \symbf{r}\left( s,\: t \right) \right) \cdot \left( \symbf{r}_s \times \symbf{r}_t \right) \odif{s} \odif{t}.
-\end{equation*}
+where \(\symbf{r}_s \times \symbf{r}_t\) is some normal vector to the
+surface \(\mathscr{S}\).
 Note that this integral represents the outward or inward flow of
 \(\symbf{F}\) through \(\mathscr{S}\), where the direction of flow
-depends on the sign of \(\symbf{n}\).
+depends on the sign of \(\symbf{\hat{n}}\).
 \subsubsection{Explicit Surfaces}
 When the surface \(\mathscr{S}\) can be expressed explicitly by the
 function
@@ -1268,28 +1291,28 @@ we can use the parametrisation:
 where we choose \(s = x\) and \(t = y\). This simplifies the surface
 integral of \(\symbf{F}\) over \(\mathscr{S}\) to:
 \begin{align*}
-    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} & = \iint_{\mathscr{S}} \symbf{F}\left( \symbf{r}\left( x,\: y \right) \right) \cdot \left( \symbf{r}_x \times \symbf{r}_y \right) \odif{x} \odif{y} \\
-                                                                                                                                                        & = \iint_{\mathscr{S}} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot \left(
+    \Phi = \iint_{\mathscr{S}} \symbf{F} \cdot \odif{\symbf{\sigma}} = \iint_{\mathscr{S}} \left( \symbf{F} \cdot \hat{\symbf{n}} \right) \odif{\sigma} & = \iint_{T} \symbf{F}\left( \symbf{r}\left( x,\: y \right) \right) \cdot \left( \symbf{r}_x \times \symbf{r}_y \right) \odif{x} \odif{y} \\
+                                                                                                                                                        & = \iint_{T} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot \left(
     \begin{bmatrix}
-            1 \\
-            0 \\
-            g_x
-        \end{bmatrix}
+        1 \\
+        0 \\
+        g_x
+    \end{bmatrix}
     \times
     \begin{bmatrix}
-            0 \\
-            1 \\
-            g_y
-        \end{bmatrix}
+        0 \\
+        1 \\
+        g_y
+    \end{bmatrix}
     \right) \odif{x} \odif{y}                                                                                                                                                                                                                                                                                \\
-                                                                                                                                                        & = \iint_{\mathscr{S}} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot
+                                                                                                                                                        & = \iint_{T} \symbf{F}\left( x,\: y,\: g\left( x,\: y \right) \right) \cdot
     \begin{bmatrix}
         -g_x \\
         -g_y \\
         1
     \end{bmatrix}
     \odif{x} \odif{y}                                                                                                                                                                                                                                                                                        \\
-                                                                                                                                                        & = \iint_{\mathscr{S}} \left( - F_1 g_x - F_2 g_y + F_3 \right) \odif{x} \odif{y}.
+                                                                                                                                                        & = \iint_{T} \left( - F_1 g_x - F_2 g_y + F_3 \right) \odif{x} \odif{y}.
 \end{align*}
 \section{Fundamental Theorems of Calculus}
 The three vector calculus operators have corresponding theorems which
@@ -1435,8 +1458,8 @@ and irreducible quadratic terms.
           \end{equation*}
           where \(A_i\) are constants.
     \item For every irreducible quadratic factor \(\left( a s^2 + bs +
-          c \right)^m\) of \(Q\left( s \right)\), we must include
-          terms of the form:
+          c \right)^m\) of \(Q\left( s \right)\), we must include terms
+          of the form:
           \begin{equation*}
               \frac{B_1 s + C_1}{a s^2 + b s + c} + \frac{B_2 s + C_2}{\left( a s^2 + b s + c \right)^2} + \cdots + \frac{B_m s + C_m}{\left( a s^2 + b s + c \right)^m} =
               \sum_{i=1}^m \frac{B_i s + C_i}{\left( a s^2 + b s + c \right)^i}
